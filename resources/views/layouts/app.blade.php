@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}">Cervecerías</a>
+          <a class="nav-link active" aria-current="page" href="{{ route ('breweries') }}">Cervecerías</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Cervezas</a>
@@ -29,7 +29,7 @@
           <a class="nav-link" href="#a">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('about') }}">Quiénes somos</a>
+          <a class="nav-link" href="{{ route ('about') }}">Quiénes somos</a>
       </li>      
       
       </ul>

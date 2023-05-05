@@ -65,5 +65,5 @@ while ($i < count($breweries) && $brewery == null) {
 
 
 Route::get('/about', function () {
-    return view('home');
-})->name('about');  //no consigo arreglar quienes somos.
+    return view('layouts.about');
+})->name('about');

@@ -9,7 +9,7 @@
 <br>
 Hola 
 @isset($nombre)
-{{$nombre . ", ¿cómo estás?"}}
+{{$nombre}}
 @endisset
 
 
@@ -19,15 +19,16 @@ Me han dicho que estás en el curso
 {{ $curso }}
 @endisset
 <br>
-Estas son nuestras cervecerías favoritas:<br>
+Estas son nuestras cervecerías favoritas:
+<br>
 <ul>
-@isset($breweries)
-    @foreach ( $breweries as $brewery )
+  @isset($breweries)
+  @foreach ( $breweries as $brewery )
 
-      <li>{{ $brewery["nombre"] }}({{ $brewery["poblacion"] }})</li>
+      <li>{{ $brewery["nombre"] }} ({{ $brewery["poblacion"] }})</li>
 
-    @endforeach
-@endisset
+ @endforeach
+  @endisset
 
 </ul>
 

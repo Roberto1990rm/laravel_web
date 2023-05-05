@@ -1,8 +1,9 @@
-@extends('layouts.app')
-
-@section('title', 'Quienes somos')
+@extends('layouts.aboutLayout')
 
 @section('content')
+
+@endsection
+
 
 <h1>Quiénes somos</h1>
 
