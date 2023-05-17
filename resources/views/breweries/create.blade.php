@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="Longitude" class="form-label">Longitud</label>
-                    <input type="text" class="form-control" id="Longitude" name="Longitude" required/>
+                    <label for="longitude" class="form-label">Longitud</label>
+                    <input type="text" class="form-control" id="longitude" name="longitude" required/>
                     <div class="invalid-feedback">
                         La longitud es es obligatoria.
                     </div>

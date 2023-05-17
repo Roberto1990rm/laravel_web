@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Brewery;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
+
 class BreweryController extends Controller
 {
     public function index()
@@ -26,20 +29,23 @@ class BreweryController extends Controller
         return view('breweries.create');
     }
 
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'nombre' => 'required',
-            // Agrega aquí las validaciones para los demás campos de la cervecería
-        ]);
+    public function store(Request $request){
+        //dd($request->all());
+    $name = $request ->name;
+    $place = $request ->place;
+    $description = $request->description;
+    $longitude = $request->longitude;
+    $latitude = $request->latitude;
 
-        $brewery = new Brewery();
-        $brewery->nombre = $validatedData['nombre'];
-        // Asigna los demás campos de la cervecería según corresponda
-        // ...
+    DB::table('breweries')->insert([
+        'nombre' => $name,
+        'poblacion' => $place,
+        'descripcion' => $description,
+        'longitude' => $longitude,
+        'latitude' => $latitude,
+    ]);
+    
 
-        $brewery->save();
-
-        return redirect()->route('breweries.show', ['id' => $brewery->id]);
-    }
+    return redirect()->route('breweries')->with ('message','a')->with('code', 0);
+ }
 }
