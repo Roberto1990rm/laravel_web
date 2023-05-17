@@ -4,17 +4,16 @@
 
 @section('content')
 
- <h1>Bienvenido al portal de cervecerías</h1>
+<h1>Bienvenido al portal de cervecerías</h1>
 
 <br>
-Hola 
+Hola
 @isset($nombre)
 {{$nombre}}
 @endisset
 
-
 <br>
-Me han dicho que estás en el curso 
+Me han dicho que estás en el curso
 @isset($curso)
 {{ $curso }}
 @endisset
@@ -22,17 +21,14 @@ Me han dicho que estás en el curso
 Estas son nuestras cervecerías favoritas:
 <br>
 <ul>
-  @isset($breweries)
-  @foreach ( $breweries as $brewery )
-
-      <li>{{ $brewery["nombre"] }} ({{ $brewery["poblacion"] }})</li>
-
- @endforeach
-  @endisset
-
+    @isset($breweries)
+    @foreach ($breweries as $brewery)
+    <li>{{ $brewery->nombre }} ({{ $brewery->poblacion }})</li>
+    @endforeach
+    @endisset
 </ul>
 
 <br>&nbsp;<br>
-<img src="{{ asset ('/img/vaso.jpg') }}" class="container-fluid" style="height: 800px; width: 500px;"><br><br>
+<img src="{{ asset('img/vaso.jpg') }}" class="container-fluid" style="height: 800px; width: 500px;"><br><br>
 
 @endsection

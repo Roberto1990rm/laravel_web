@@ -1,69 +1,28 @@
 <?php
 
+use App\Http\Controllers\BreweryController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
-    $breweries = [
-        ['id' => 1, 'nombre' => 'Uceda', 'poblacion' => 'Madrid'],
-        ['id' => 2, 'nombre' => 'Dunn\'s','poblacion' => 'Barcelona'],
-        ['id' => 3, 'nombre' => 'Triana', 'poblacion' => 'Sevilla'],
-        ['id' => 4, 'nombre' => 'Moraima', 'poblacion' => 'Madrid'],
-        ['id' => 5, 'nombre' => 'Yunque', 'poblacion' => 'Ponferrada'],
-        ['id' => 6, 'nombre' => 'Tang', 'poblacion' => 'Ponferrada'],
-    ];
-
-    return view('home', ['nombre' => 'David', 'curso' => 
-'HPT07', 'breweries' => $breweries]);
+    return view('home', [
+        'nombre' => 'Roberto',
+        'curso' => 'HPT07'
+    ]);
 })->name('home');
 
-Route::get('/cervecerias', function () { 
-    $breweries = [
-    ['id' => 1, 'nombre' => 'Uceda', ' poblacion' => 'Madrid'],
-    ['id' => 2, 'nombre' => 'Dunn\'s','poblacion' => 'Barcelona'],
-    ['id' => 3, 'nombre' => 'Triana', 'poblacion' => 'Sevilla'],
-    ['id' => 4, 'nombre' => 'Moraima', 'poblacion' => 'Madrid'],
-    ['id' => 5, 'nombre' => 'Yunque', 'poblacion' => 'Ponferrada'],
-    ['id' => 6, 'nombre' => 'Tang', 'poblacion' => 'Ponferrada'],
-];
+Route::get('/cervecerias', [BreweryController::class, 'index'])->name('breweries.index');
+Route::get('/breweries/create', 'BreweryController@create')->name('breweries.create');
 
-   return view ('breweries', ['breweries' => $breweries]);
-})->name('breweries');
+Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('breweries.show');
+Route::get('/breweries', [BreweryController::class, 'index'])->name('breweries');
 
-Route::get ('/cervecerias/{id}', function ($id) { 
-    $breweries = [
-    ['id' => 1, 'nombre' => 'Uceda', 'poblacion' => 'Madrid'],
-    ['id' => 2, 'nombre' => 'Dunn\'s','poblacion' => 'Barcelona'],
-    ['id' => 3, 'nombre' => 'Triana', 'poblacion' => 'Sevilla'],
-    ['id' => 4, 'nombre' => 'Moraima', 'poblacion' => 'Madrid'],
-    ['id' => 5, 'nombre' => 'Yunque', 'poblacion' => 'Ponferrada'],
-    ['id' => 6, 'nombre' => 'Tang', 'poblacion' => 'Ponferrada'],
-];
+Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-$brewery = null;
-$i = 0;
-while ($i < count($breweries) && $brewery == null) {
-    if ($id == $breweries[$i]['id']) { 
-        $brewery = $breweries[$i];
-    }
-    $i++;
-}
-
-
-    return view('brewery', ['brewery' => $brewery]);
-})->name('brewery');
-
+Route::get('/cervecerias/crear', [BreweryController::class, 'create'])->name('brewery.create');
+Route::post('/cervecerias', [BreweryController::class, 'store'])->name('brewery.store');
 
 Route::get('/about', function () {
-    return view('layouts.about');
+    return view('about');
 })->name('about');
