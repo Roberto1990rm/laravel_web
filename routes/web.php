@@ -12,7 +12,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/cervecerias', [BreweryController::class, 'index'])->name('breweries.index');
-Route::get('/breweries/create', 'BreweryController@create')->name('breweries.create');
+
+Route::get ('/breweries/create', [BreweryController::class, 'create'])->name('breweries.create');
+Route::post ('/breweries/store', [BreweryController::class, 'store'])->name('breweries.store');
 
 Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('breweries.show');
 Route::get('/breweries', [BreweryController::class, 'index'])->name('breweries');
@@ -20,8 +22,7 @@ Route::get('/breweries', [BreweryController::class, 'index'])->name('breweries')
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-Route::get('/cervecerias/crear', [BreweryController::class, 'create'])->name('brewery.create');
-Route::post('/cervecerias', [BreweryController::class, 'store'])->name('brewery.store');
+
 
 Route::get('/about', function () {
     return view('about');

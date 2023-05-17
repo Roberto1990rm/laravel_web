@@ -7,7 +7,7 @@
     <div class="col-sm-6">
         <h2>Nueva cervecería</h2>
 
-        <form method="POST" action="{{ route('contact.store') }}" class="needs-validation" novalidate>
+        <form method="POST" action="{{ route('breweries.store') }}" class="needs-validation" novalidate>
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre</label>
@@ -73,4 +73,3 @@
 
 
 
-CMBIAR INFO CREATE
