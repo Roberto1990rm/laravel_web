@@ -23,7 +23,6 @@ Route::get('/contact', [ContactController::class, 'create'])->name('contact.crea
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 
-
 Route::get('/about', function () {
     return view('about');
 })->name('about');
