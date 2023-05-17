@@ -14,7 +14,7 @@
   </head>
 <body>
 <div class="container">
-<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+<nav class="navbar navbar-expand-md navbar-light bg-warning">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset ('/img/logo.webp') }}" alt="{{ ('APP_NAME') }}" style="height: 3em;"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
