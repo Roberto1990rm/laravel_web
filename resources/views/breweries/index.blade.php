@@ -3,7 +3,7 @@
 @section('title', 'Listado de cervecerías')
 
 @section('content')
-    <br>
+    
     <h1>Listado de cervecerías</h1>
 
     <div id="map" style="width: 100%; height: 400px; margin-bottom: 1cm;"></div>
@@ -30,11 +30,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([0, 0], 2);
+        var map = L.map('map').setView([40.4168, -3.7038], 6);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
+        map.setZoom(5); 
 
         @foreach ($breweries as $brewery)
             L.marker([{{ $brewery->latitude }}, {{ $brewery->longitude }}]).addTo(map)
