@@ -22,37 +22,37 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('img/bar.jpg') }}" class="card-img-top" alt="{{ $brewery->nombre }}" style="padding: 5px; border-radius: 10px;">
+                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 1</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/bar.jpg') }}" class="card-img-top" alt="{{ $brewery->nombre }}" style="padding: 5px; border-radius: 10px;">
+                            <img src="{{ asset('img/vaso.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 2</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/bar.jpg') }}" class="card-img-top" alt="{{ $brewery->nombre }}" style="padding: 5px; border-radius: 10px;">
+                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 3</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/bar.jpg') }}" class="card-img-top" alt="{{ $brewery->nombre }}" style="padding: 5px; border-radius: 10px;">
+                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 4</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/bar.jpg') }}" class="card-img-top" alt="{{ $brewery->nombre }}" style="padding: 5px; border-radius: 10px;">
+                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 5</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/bar.jpg') }}" class="card-img-top" alt="{{ $brewery->nombre }}" style="padding: 5px; border-radius: 10px;">
+                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 6</p>
                             </div>
@@ -69,8 +69,11 @@
                 </div>
                 <div class="card-body text-center">
                     <h5 class="card-title" style="color: #FF0000;">{{ $brewery->nombre }}</h5>
-                    <p class="card-text">{{ $brewery->descripcion }}</p>
-                    <p class="card-text">{{ $brewery->poblacion }}</p>
+                    <p class="card-text" style="text-align: justify;">{{ $brewery->descripcion }}</p>
+                    <p class="card-text">
+                        <span class="font-weight-bold">Calle:</span>
+                        <span style="text-decoration: underline; display: inline-block; margin-left: 5px;">{{ $brewery->calle }}</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -84,6 +87,15 @@
         <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-pill mb-5" style="background-color: #7FBF7F; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 10px 20px;">Volver</a>
     </div>
 
+    <style>
+        .carousel-image {
+            object-fit: cover;
+            height: 300px;
+            border-radius: 10px;
+            padding: 5px;
+        }
+    </style>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <script>
         var map = L.map('map').setView([{{ $brewery->latitude }}, {{ $brewery->longitude }}], 13);
@@ -92,6 +104,8 @@
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        L.marker([{{ $brewery->latitude }}, {{ $brewery->longitude }}]).addTo(map);
+        L.marker([{{ $brewery->latitude }}, {{ $brewery->longitude }}]).addTo(map)
+            .bindPopup("Calle: {{ $brewery->calle }}")
+            .openPopup();
     </script>
 @endsection
