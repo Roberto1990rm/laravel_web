@@ -15,10 +15,11 @@
     <div class="col-sm-4">
         <div class="custom-card card mb-4 mt-4">
             <img src="{{ asset('img/bar.jpg') }}" class="card-img-top" alt="{{ $brewery->nombre }}" style="padding: 5px;">
-            <div class="card-body">
-                <h5 class="card-title">{{ $brewery->nombre }}</h5>
+            <div class="card-body text-center">
+                <h5 class="card-title" style="color: #FF0000;">{{ $brewery->nombre }}</h5>
                 <p class="card-text">{{ $brewery->descripcion }}</p>
                 <p class="card-text">{{ $brewery->poblacion }}</p>
+                <hr style="border-color: #000000;">
                 <div class="d-flex justify-content-center"> 
                     <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary">Ver más</a>
                 </div>
@@ -29,7 +30,7 @@
 </div>
 
 <div class="text-center" style="margin-top: 15px;">
-    <a href="{{ route('breweries.create') }}" class="btn btn-danger mb-5">Añadir Cervecería</a>
+    <a href="{{ route('breweries.create') }}" class="btn btn-danger mb-5" style="box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);">Añadir Cervecería</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
