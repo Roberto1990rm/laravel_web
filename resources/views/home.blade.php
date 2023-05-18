@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1>Bienvenido al portal de cervecerías</h1>
+<h1 class="custom-heading">Bienvenido al portal de cervecerías</h1>
 <ul>
     @isset($breweries)
     @foreach ($breweries as $brewery)
@@ -13,14 +13,13 @@
     @endisset
 </ul>
 
-
-
 <a href="{{ route('breweries') }}">
     <div class="d-flex justify-content-center align-items-center mb-2 position-relative">
-        <img src="{{ asset('img/bar.jpg') }}" class="container-fluid opacity-90" style="width: 100%;">
+        <img src="{{ asset('img/bar.jpg') }}" class="container-fluid opacity-90 shadow rounded" style="width: 100%;">
         <a href="{{ route('breweries') }}" class="btn btn-danger round-button" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);">Ver Cervecerías</a>
-      </div>
+    </div>
 </a>
+
 <h3 class="yellowH2">Aquí encontrarás el mejor catálogo de cervecerías de España</h3>
 <br><br>
 

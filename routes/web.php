@@ -16,6 +16,7 @@ Route::get('/cervecerias', [BreweryController::class, 'index'])->name('breweries
 Route::get ('/breweries/create', [BreweryController::class, 'create'])->name('breweries.create');
 Route::post ('/breweries/store', [BreweryController::class, 'store'])->name('breweries.store');
 
+
 Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('breweries.show');
 Route::get('/breweries', [BreweryController::class, 'index'])->name('breweries');
 
