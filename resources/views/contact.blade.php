@@ -41,6 +41,9 @@
         </form>
     </div>
 </div>
+<div class="text-center">
+    <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-pill mb-5" style="background-color: #7FBF7F; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 10px 20px;">Volver a cervecerías</a>
+</div>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {

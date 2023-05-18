@@ -28,31 +28,31 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/vaso.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/margarita.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 2</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/restaurant.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 3</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/wines.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 4</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/margarita.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 5</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/restaurant.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 6</p>
                             </div>
@@ -68,11 +68,11 @@
                     </a>
                 </div>
                 <div class="card-body text-center">
-                    <h5 class="card-title" style="color: #FF0000;">{{ $brewery->nombre }}</h5>
+                    <h5 class="card-title" style="color: #FF0000; font-family: 'Impact', sans-serif;">{{ $brewery->nombre }}</h5>
                     <p class="card-text" style="text-align: justify;">{{ $brewery->descripcion }}</p>
                     <p class="card-text">
-                        <span class="font-weight-bold">Calle:</span>
-                        <span style="text-decoration: underline; display: inline-block; margin-left: 5px;">{{ $brewery->calle }}</span>
+                        <span class="font-weight-bold"><strong>Calle:</strong></span>
+                        <span style="text-decoration: underline; display: inline-block; margin-left: 5px; font-family: 'Comic Sans MS', cursive;">{{ $brewery->calle }}</span>
                     </p>
                 </div>
             </div>
@@ -84,7 +84,7 @@
     </div>
 
     <div class="text-center">
-        <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-pill mb-5" style="background-color: #7FBF7F; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 10px 20px;">Volver</a>
+        <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-pill mb-5" style="background-color: #7FBF7F; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 10px 20px;">Volver atrás</a>
     </div>
 
     <style>

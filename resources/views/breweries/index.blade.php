@@ -33,6 +33,10 @@
     <a href="{{ route('breweries.create') }}" class="btn btn-danger mb-5" style="box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);">Añadir Cervecería</a>
 </div>
 
+<div class="text-center" style="margin-top: 20px; margin-bottom: 60px;">
+    <a href="{{ route('home') }}" class="btn btn-primary rounded-pill" style="background: linear-gradient(to right, #667eea, #764ba2); color: #FFFFFF; padding: 10px 20px;">Volver al inicio</a>
+  </div>
+
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
     var map = L.map('map').setView([40.4168, -3.7038], 6);
