@@ -3,7 +3,6 @@ body {
     font-family: 'Montserrat', sans-serif;
   }
   
-  
 
 h1 {
     text-align: center;
@@ -32,10 +31,10 @@ body {
 
 .custom-heading {
   border-radius: 10px;
-  background: linear-gradient(135deg, #5e9a4c, #FDECEC);
-  box-shadow: 0 4px 6px rgba(57, 152, 79, 0.5);
+  background: linear-gradient(135deg, #fdf61c, #c2b6b6);
+  box-shadow: 0 4px 6px rgba(33, 34, 1, 0.878);
   padding: 10px;
-  color: #ffd000; /* Ajusta el color del texto según sea necesario */
+  color: #101111; /* Ajusta el color del texto según sea necesario */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 

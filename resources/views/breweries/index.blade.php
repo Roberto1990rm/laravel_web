@@ -33,7 +33,7 @@
 
 <div class="text-center mb-5 p-5">
     <div class="d-flex justify-content-center">
-        <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm d-flex align-items-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f74104, #ff0000); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 6px 12px; line-height: 1;">
+        <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm d-flex align-items-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f7d304, #ffd000); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 6px 12px; line-height: 1;">
             <span style="font-size: 14px; margin: 0 auto;">Añadir Cervecerías</span>
         </a>
     

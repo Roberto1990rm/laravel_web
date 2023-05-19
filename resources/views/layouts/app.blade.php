@@ -14,24 +14,32 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d0a3551360.js" crossorigin="anonymous"></script>
     <style>
-      body {
-          background-image: url("{{ asset('/img/burbujas.jpg') }}");
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center center;
-          background-attachment: fixed;
-          background-color: #f1f1f1;
-      }
-  </style>
-  
-
+        body {
+            background-image: url("{{ asset('img/textura.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-color: #f1f1f1;
+        }
+        .navbar {
+            background-image: url("{{ asset('img/textura.jpg') }}");
+            background-repeat: repeat-x;
+            border: 3px solid #76AD5F;
+            box-shadow: 0 4px 6px rgba(33, 34, 1, 0.878);
+        }
+        .card {
+            background-image: url("{{ asset('img/burbujas.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-
-
-
-  <nav class="navbar navbar-expand-md navbar-light" style="background: linear-gradient(135deg, #9be99c, #61c466); border: 3px solid #76AD5F; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);">
+  <nav class="navbar navbar-expand-md navbar-light" style="background: linear-gradient(135deg, #fce217f1, #bfc461); border: 3px solid #ada25f; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset ('/img/logo.webp') }}" alt="{{ ('APP_NAME') }}" style="height: 3em; filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));">
@@ -62,7 +70,7 @@
                     </a>
                 </li>
                 <li class="nav-item" style="margin-left:px;">
-                    <a class="nav-link" href="{{ route('home') }}" style="color: #8BE68C; margin-right: 5px;">
+                    <a class="nav-link" href="{{ route('home') }}" style="color: #138906; margin-right: 5px;">
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
@@ -70,25 +78,15 @@
         </div>
     </div>
 </nav>
-
-
-
-
-  
-  
-  
-  
-  
-<article>
-@yield('content')
-</article>
+    <article>
+        @yield('content')
+    </article>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <footer class="bg-secondary text-white py-2 fixed-bottom">
-        <div class="container">
-        Pié de página 
-        </div>
-    </footer>
-    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<footer class="bg-secondary text-white py-2 fixed-bottom">
+    <div class="container">
+        Pié de página
+    </div>
+</footer>
 </body>
 </html>
