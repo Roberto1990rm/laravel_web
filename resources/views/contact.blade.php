@@ -37,7 +37,11 @@
                     Debes aceptar la política de privacidad.
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning">Enviar</button>
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-warning mx-auto">Enviar</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>

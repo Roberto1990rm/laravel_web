@@ -46,15 +46,24 @@
                     </div>
                 </div>
             </div>
-            <div class="conteiner justify-content-center">
-                <div class="row" style="display: flex; justify-content: center;">
-                    <button type="submit" class="col-2 mb-5 btn btn-warning">Enviar</button>
+           
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-warning mx-auto">Enviar</button>
                 </div>
+            </div>
+            
+            
+            
                 <div class="row mb-5">
                     <div style="display: flex; justify-content: center;">
-                        <a href="{{ route('home') }}" class="btn btn-primary rounded-circle" style="width: 60px; height: 60px; padding-top: 1px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom, #FCD307, #FFDF00); color: #FFFFFF; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; display: flex; align-items: center; justify-content: center; font-weight: bold; text-transform: uppercase; text-decoration: none;">
-                            Home
-                        </a> 
+                        
+                        <div class=" text-center">
+                            <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-pill mb-5" style="background-color: #7FBF7F; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 10px 20px;">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                        
                 </div>
             </div>
         </form>

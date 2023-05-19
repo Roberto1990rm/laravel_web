@@ -17,31 +17,57 @@
 </head>
 <body>
 <div class="container">
-  <nav class="navbar navbar-expand-md navbar-light" style="background: linear-gradient(135deg, #D2F7C7, #FDECEC);"> 
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset ('/img/logo.webp') }}" alt="{{ ('APP_NAME') }}" style="height: 3em;"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}">Cervecerías</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Cervezas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route ('contact.create') }}">Contacto</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('about') }}">Quiénes somos</a>
-      </li>      
-      
-      </ul>
+
+
+
+  <nav class="navbar navbar-expand-md navbar-light" style="background: linear-gradient(135deg, #8BE68C, #43A047); border: 3px solid #76AD5F; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <img src="{{ asset ('/img/logo.webp') }}" alt="{{ ('APP_NAME') }}" style="height: 3em; filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}" style="font-weight: bold; color: #ffdd00; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 1.2em; filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));">
+                        <span style="border-bottom: 2px solid #ff4400;">Cervecerías</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="font-weight: bold; color: #FFCC00; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">
+                        <span style="border-bottom: 2px solid #FFCC00;">Cervezas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #efeb1b; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
+                        <span style="border-bottom: 2px solid #eaf10b;">Contacto</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('about') }}" style="font-weight: bold; color: #f3f5a1; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
+                        <span style="border-bottom: 2px solid #fff266;">Quiénes somos</span>
+                    </a>
+                </li>
+                <li class="nav-item" style="margin-left: 40px;">
+                    <a class="nav-link" href="{{ route('home') }}" style="color: #8BE68C; margin-right: 5px;">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
+
+
+
+
+  
+  
+  
+  
+  
 <article>
 @yield('content')
 </article>

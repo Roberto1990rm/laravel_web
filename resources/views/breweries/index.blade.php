@@ -30,10 +30,12 @@
 </div>
 
 <div class="text-center" style="margin-top: 20px; margin-bottom: 40px">
-    <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-lg" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f8ec04, #83bc62); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 10px 20px;">
-        Añadir una<br><i class="fas fa-plus"></i>
+    <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f8ec04, #ffcc00); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 6px 12px; line-height: 1;">
+      <span style="font-size: 14px;">Añadir</span><br><i class="fas fa-plus" style="font-size: 16px;"></i>
     </a>
   </div>
+  
+  
   
   
 
