@@ -4,8 +4,8 @@
 
 @section('content')
 <div class="d-flex justify-content-center">
-    <div class="col-sm-6 mt-3">
-        <h2>Contacta con nosotros</h2>
+    <div class="col-sm-6">
+        <h2 class="mt-3">Contacta con nosotros</h2>
 
         <form method="POST" action="{{ route('contact.store') }}" class="needs-validation" novalidate>
             @csrf
