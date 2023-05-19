@@ -31,17 +31,18 @@
 
 <div class="text-center" style="margin-top: 20px; margin-bottom: 40px">
     <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-lg" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f8ec04, #83bc62); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 10px 20px;">
-      Añadir otra
+        Añadir<br> <i class="fas fa-plus"></i>
     </a>
   </div>
   
+  
 
-<div class="text-center" style="margin-top: 20px; margin-bottom: 60px;">
-    <div style="display: flex; justify-content: center;">
-        <a href="{{ route('home') }}" class="btn btn-primary rounded-pill px-4 py-3" style="width: 150px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom, #FCD307, #FFDF00); color: #FFFFFF; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: none; display: flex; align-items: center; justify-content: center; font-weight: 600; text-transform: uppercase; text-decoration: none;">
-          Home
-        </a>
-      </div>
+  <div class="text-center mt-2 mb-5">
+    <a href="{{ route('home') }}" class="btn btn-primary rounded-pill mb-5" style="background: linear-gradient(to right, #667eea, #764ba2); color: #FFFFFF; padding: 10px 20px;">
+      <i class="fas fa-home"></i>
+    </a>
+  </div>
+  
       
 </div>
 

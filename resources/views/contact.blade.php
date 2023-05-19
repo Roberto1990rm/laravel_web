@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-center">
-    <div class="col-sm-6">
+    <div class="col-sm-6 mt-3">
         <h2>Contacta con nosotros</h2>
 
         <form method="POST" action="{{ route('contact.store') }}" class="needs-validation" novalidate>
@@ -41,9 +41,12 @@
         </form>
     </div>
 </div>
-<div class="text-center">
-    <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-pill mb-5" style="background-color: #7FBF7F; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 10px 20px;">Volver a cervecerías</a>
-</div>
+<div class="text-center mt-2 mb-5">
+    <a href="{{ route('home') }}" class="btn btn-primary rounded-pill" style="background: linear-gradient(to right, #667eea, #764ba2); color: #FFFFFF; padding: 10px 20px;">
+      <i class="fas fa-home"></i>
+    </a>
+  </div>
+  
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {

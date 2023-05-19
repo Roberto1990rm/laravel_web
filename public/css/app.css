@@ -1,10 +1,16 @@
+
+body {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  
+
 h1 {
     text-align: center;
     margin-top: 15px;
     margin-bottom: 15px;
     color: #0c0d0c;
     background-color: rgba(104, 123, 109, 0.7); /* Cambia el valor 0.7 para ajustar la opacidad */
-    font-family:'Times New Roman', Times, serif;
 }
   
 
@@ -13,7 +19,6 @@ h1 {
     padding: 10px; 
     transform: perspective(500px) rotateX(-10deg);
     color: rgb(77, 77, 4);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-shadow: 1px 1px 2px rgba(2, 2, 2, 0.2);
 }
   
@@ -39,4 +44,12 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(57, 152, 79, 0.5);
   }
+
+  .custom-card1 {
+    background: linear-gradient(135deg, #D2F7C7, #FDECEC);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(57, 152, 79, 0.5);
+    border: 3px solid #FFC300;
+  }
+  
   
