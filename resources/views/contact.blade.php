@@ -46,7 +46,7 @@
     </div>
 </div>
 <div class="text-center mt-2 mb-5">
-    <a href="{{ route('home') }}" class="btn btn-primary rounded-pill" style="background: linear-gradient(to right, #667eea, #764ba2); color: #FFFFFF; padding: 10px 20px;">
+    <a href="{{ route('home') }}" class="btn btn-primary rounded-pill" style="background: linear-gradient(to right, #5bd11792, #82a24b); color: #FFFFFF; padding: 10px 20px;">
       <i class="fas fa-home"></i>
     </a>
   </div>

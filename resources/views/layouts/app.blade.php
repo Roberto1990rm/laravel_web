@@ -13,6 +13,17 @@
     <link rel="stylesheet" href="{{ asset ('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d0a3551360.js" crossorigin="anonymous"></script>
+    <style>
+      body {
+          background-image: url("{{ asset('/img/burbujas.jpg') }}");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+          background-attachment: fixed;
+          background-color: #f1f1f1;
+      }
+  </style>
+  
 
 </head>
 <body>
@@ -20,7 +31,7 @@
 
 
 
-  <nav class="navbar navbar-expand-md navbar-light" style="background: linear-gradient(135deg, #8BE68C, #43A047); border: 3px solid #76AD5F; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);">
+  <nav class="navbar navbar-expand-md navbar-light" style="background: linear-gradient(135deg, #9be99c, #61c466); border: 3px solid #76AD5F; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset ('/img/logo.webp') }}" alt="{{ ('APP_NAME') }}" style="height: 3em; filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));">

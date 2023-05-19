@@ -24,27 +24,32 @@
                     <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border: 2px solid #333; background: linear-gradient(to bottom, #2F855A, #48BB78); color: #FFF;">Ver más</a>
                 </div>
             </div>
+            
         </div>
     </div>
     @endforeach
 </div>
 
-<div class="text-center" style="margin-top: 20px; margin-bottom: 40px">
-    <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f8ec04, #ffcc00); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 6px 12px; line-height: 1;">
-      <span style="font-size: 14px;">Añadir</span><br><i class="fas fa-plus" style="font-size: 16px;"></i>
-    </a>
-  </div>
-  
-  
-  
-  
 
-  <div class="text-center mt-2 mb-5">
-    <a href="{{ route('home') }}" class="btn btn-primary rounded-pill mb-5" style="background: linear-gradient(to right, #667eea, #764ba2); color: #FFFFFF; padding: 10px 20px;">
-      <i class="fas fa-home"></i>
-    </a>
-  </div>
-  
+<div class="text-center mb-5 p-5">
+    <div class="d-flex justify-content-center">
+        <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm d-flex align-items-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f74104, #ff0000); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 6px 12px; line-height: 1;">
+            <span style="font-size: 14px; margin: 0 auto;">Añadir Cervecerías</span>
+        </a>
+    
+        <a href="{{ route('home') }}" class="btn btn-primary rounded-pill ms-3" style="background: linear-gradient(to right, #66ea90, #4ba278); color: #FFFFFF; padding: 10px 20px;">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+    
+</div>
+
+
+
+
+</div>
+
+
       
 </div>
 
