@@ -13,15 +13,15 @@
 <div class="row">
     @foreach ($breweries as $brewery)
     <div class="col-sm-4">
-        <div class="custom-card card mb-4 mt-4">
+        <div class="custom-card card mb-4 mt-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border-radius: 10px;">
             <img src="{{ asset('img/bar.jpg') }}" class="card-img-top" alt="{{ $brewery->nombre }}" style="padding: 5px;">
             <div class="card-body text-center">
                 <h5 class="card-title" style="color: #FF0000;">{{ $brewery->nombre }}</h5>
-                <p class="card-text">{{ $brewery->descripcion }}</p>
-                <p class="card-text">{{ $brewery->poblacion }}</p>
+                <p class="card-text"><i>{{ $brewery->descripcion }}</i></p>
+                <p class="card-text"><b>{{ $brewery->poblacion }}</b></p>
                 <hr style="border-color: #000000;">
                 <div class="d-flex justify-content-center"> 
-                    <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary">Ver más</a>
+                    <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border: 2px solid #333; background: linear-gradient(to bottom, #2F855A, #48BB78); color: #FFF;">Ver más</a>
                 </div>
             </div>
         </div>
@@ -29,13 +29,25 @@
     @endforeach
 </div>
 
-<div class="text-center" style="margin-top: 15px;">
-    <a href="{{ route('breweries.create') }}" class="btn btn-danger mb-5" style="box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);">Añadir Cervecería</a>
-</div>
+<div class="text-center" style="margin-top: 20px; margin-bottom: 40px">
+    <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-lg" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f8ec04, #83bc62); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 10px 20px;">
+      Añadir otra
+    </a>
+  </div>
+  
 
 <div class="text-center" style="margin-top: 20px; margin-bottom: 60px;">
-    <a href="{{ route('home') }}" class="btn btn-primary rounded-pill" style="background: linear-gradient(to right, #667eea, #764ba2); color: #FFFFFF; padding: 10px 20px;">Volver al inicio</a>
-  </div>
+    <div style="display: flex; justify-content: center;">
+        <a href="{{ route('home') }}" class="btn btn-primary rounded-pill px-4 py-3" style="width: 150px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom, #FCD307, #FFDF00); color: #FFFFFF; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: none; display: flex; align-items: center; justify-content: center; font-weight: 600; text-transform: uppercase; text-decoration: none;">
+          Home
+        </a>
+      </div>
+      
+</div>
+
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>

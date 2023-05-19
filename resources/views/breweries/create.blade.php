@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-center">
     <div class="col-sm-6">
-        <h2>Nueva cervecería</h2>
+        <h2 class="pt-3 pb-3">Nueva cervecería</h2>
 
         <form method="POST" action="{{ route('breweries.store') }}" class="needs-validation" novalidate>
             @csrf
@@ -46,7 +46,17 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning">Enviar</button>
+            <div class="conteiner justify-content-center">
+                <div class="row" style="display: flex; justify-content: center;">
+                    <button type="submit" class="col-2 mb-5 btn btn-warning">Enviar</button>
+                </div>
+                <div class="row mb-5">
+                    <div style="display: flex; justify-content: center;">
+                        <a href="{{ route('home') }}" class="btn btn-primary rounded-circle" style="width: 60px; height: 60px; padding-top: 1px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom, #FCD307, #FFDF00); color: #FFFFFF; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; display: flex; align-items: center; justify-content: center; font-weight: bold; text-transform: uppercase; text-decoration: none;">
+                            Home
+                        </a> 
+                </div>
+            </div>
         </form>
     </div>
 </div>
