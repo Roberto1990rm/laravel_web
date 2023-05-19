@@ -23,9 +23,9 @@
             background-color: #f1f1f1;
         }
         .navbar {
-            background-image: url("{{ asset('img/textura.jpg') }}");
+            background-image: url("{{ asset('img/burbujas.jpg') }}");
             background-repeat: repeat-x;
-            border: 3px solid #76AD5F;
+            border: 3px solid #cdd0cb;
             box-shadow: 0 4px 6px rgba(33, 34, 1, 0.878);
         }
         .card {
@@ -39,7 +39,7 @@
 </head>
 <body>
 <div class="container">
-  <nav class="navbar navbar-expand-md navbar-light" style="background: linear-gradient(135deg, #fce217f1, #bfc461); border: 3px solid #ada25f; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);">
+  <nav class="navbar navbar-expand-md navbar-light" >
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset ('/img/logo.webp') }}" alt="{{ ('APP_NAME') }}" style="height: 3em; filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));">
