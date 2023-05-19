@@ -31,17 +31,17 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}" style="font-weight: bold; color: #ffdd00; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 1.2em; filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));">
-                        <span style="border-bottom: 2px solid #ff4400;">Cervecerías</span>
+                    <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}" style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
+                        <span style="border-bottom: 2px solid #050505;">Cervecerías</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-weight: bold; color: #FFCC00; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">
-                        <span style="border-bottom: 2px solid #FFCC00;">Cervezas</span>
-                    </a>
+                  <a class="nav-link active" aria-current="page" //*href="{{ route('breweries') }}" style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
+                    <span style="border-bottom: 2px solid #050505;">Cervezas</span>
+                </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #efeb1b; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
+                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #faf9b3; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
                         <span style="border-bottom: 2px solid #eaf10b;">Contacto</span>
                     </a>
                 </li>
@@ -50,7 +50,7 @@
                         <span style="border-bottom: 2px solid #fff266;">Quiénes somos</span>
                     </a>
                 </li>
-                <li class="nav-item" style="margin-left: 40px;">
+                <li class="nav-item" style="margin-left:px;">
                     <a class="nav-link" href="{{ route('home') }}" style="color: #8BE68C; margin-right: 5px;">
                         <i class="fas fa-home"></i>
                     </a>
