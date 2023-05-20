@@ -80,7 +80,7 @@
                         <span style="text-decoration: underline; display: inline-block; margin-left: 5px; font-family: 'Comic Sans MS', cursive;">{{ $brewery->ciudad }}</span>
                     </p>
                     <div class="d-flex justify-content-center mt-4">
-                        <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #7FBF7F; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+                        <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
                             <i class="fas fa-edit"></i>
                         </a>
                         <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
@@ -92,8 +92,13 @@
         </div>
     </div>
 
-    <div class="map-container" style="padding-bottom: 50px;">
+    <div class="map-container" style="padding-bottom: 10px;">
         <div id="map" style="height: 300px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);"></div>
+    </div>
+    <div class="d-flex flex-column align-items-center" style="padding-bottom: 30px;">
+        <a href="{{ route('home') }}" class="btn btn-primary rounded-pill" style="background: linear-gradient(to right, #66ea90, #4ba278); color: #FFFFFF; padding: 10px 20px; margin-bottom: 10px;">
+            <i class="fas fa-home"></i>
+        </a>
     </div>
 
     <style>
