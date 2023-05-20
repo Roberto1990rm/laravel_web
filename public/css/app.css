@@ -1,8 +1,6 @@
-
 body {
     font-family: 'Montserrat', sans-serif;
-  }
-  
+}
 
 h1 {
     text-align: center;
@@ -11,7 +9,6 @@ h1 {
     color: #0c0d0c;
     background-color: rgba(104, 123, 109, 0.7); /* Cambia el valor 0.7 para ajustar la opacidad */
 }
-  
 
 .yellowH2 {
     text-align: center;
@@ -20,7 +17,6 @@ h1 {
     color: rgb(243, 236, 26);
     text-shadow: 1px 1px 2px rgba(219, 6, 6, 0.911);
 }
-  
 
 body {
     /*background-image: url('../img/lupulo2.jpg'); /* Ruta de la imagen de campo de lúpulo */
@@ -38,23 +34,20 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
-
 .custom-card {
     background: linear-gradient(135deg, #D2F7C7, #FDECEC);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(57, 152, 79, 0.5);
-  }
+}
 
-  .custom-card1 {
+.custom-card1 {
     background: linear-gradient(135deg, #D2F7C7, #FDECEC);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(57, 152, 79, 0.5);
     border: 3px solid #FFC300;
-  }
-  
+}
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: #000000;
 }
-
