@@ -46,12 +46,26 @@
     .custom-heading {
         text-decoration: none;
     }
+
+    .fixed-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 999;
+        font-size: 24px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    .fixed-icon:hover {
+        color: #FF0000;
+    }
 </style>
 
 <div class="home-container">
     <a href="{{ route('breweries') }}">
         <video autoplay muted loop class="background-video full-width">
-            <source src="{{ asset('videos/cerveza1.mp4') }}" type="video/mp4">
+            <source src="{{ asset('videos/fondoHome.mp4') }}" type="video/mp4">
             Tu navegador no soporta video HTML5.
         </video>
     </a>
@@ -76,8 +90,30 @@
             <i class="enter-icon fas fa-sign-in-alt"></i>
         </a>
     </div>
-    
-    
+
+    <div class="fixed-icon" id="audio-toggle">
+        <i class="fas fa-volume-up"></i>
+    </div>
 </div>
+
+<script>
+    const audioToggle = document.getElementById('audio-toggle');
+    const backgroundVideo = document.querySelector('.background-video');
+    const backgroundAudio = document.querySelector('audio');
+
+    audioToggle.addEventListener('click', function() {
+        if (backgroundVideo.muted) {
+            backgroundVideo.muted = false;
+            backgroundAudio.muted = false;
+            audioToggle.classList.remove('fa-volume-off');
+            audioToggle.classList.add('fa-volume-up');
+        } else {
+            backgroundVideo.muted = true;
+            backgroundAudio.muted = true;
+            audioToggle.classList.remove('fa-volume-up');
+            audioToggle.classList.add('fa-volume-off');
+        }
+    });
+</script>
 
 @endsection

@@ -60,8 +60,8 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #f3480f; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
-                        <span style="border-bottom: 2px solid #f1bb0b;">Contacto</span>
+                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #f91505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
+                        <span style="border-bottom: 2px solid #fa3f07;">Contacto</span>
                     </a>
                 </li>
                 <li class="nav-item">
