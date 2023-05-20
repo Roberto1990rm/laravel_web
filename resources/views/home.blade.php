@@ -72,10 +72,11 @@
     </div>
 
     <div class="enter-button mt-5 d-flex justify-content-center align-items-center" style="margin-bottom: 30px;">
-        <a href="{{ route('breweries') }}" style="color: #FFFFFF;">
+        <a href="{{ route('breweries') }}" style="color: #FFFFFF; margin-right: 10px;">
             <i class="enter-icon fas fa-sign-in-alt"></i>
         </a>
     </div>
+    
     
 </div>
 

@@ -55,18 +55,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" //*href="{{ route('breweries') }}" style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
+                  <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}" style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
                     <span style="border-bottom: 2px solid #050505;">Cervezas</span>
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #faf9b3; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
-                        <span style="border-bottom: 2px solid #eaf10b;">Contacto</span>
+                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #f3480f; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
+                        <span style="border-bottom: 2px solid #f1bb0b;">Contacto</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about') }}" style="font-weight: bold; color: #f3f5a1; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
-                        <span style="border-bottom: 2px solid #fff266;">Quiénes somos</span>
+                    <a class="nav-link" href="{{ route('about') }}" style="font-weight: bold; color:  #f91505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
+                        <span style="border-bottom: 2px solid #f71509;">Quiénes somos</span>
                     </a>
                 </li>
                 <li class="nav-item" style="margin-left:px;">
