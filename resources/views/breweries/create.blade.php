@@ -59,7 +59,7 @@
                     <div style="display: flex; justify-content: center;">
                         
                         <div class=" text-center">
-                            <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-pill mb-5" style="background-color: #7FBF7F; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 10px 20px;">
+                            <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
                         </div>

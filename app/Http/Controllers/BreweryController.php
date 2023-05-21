@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brewery;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Brewery;
 
 class BreweryController extends Controller
 {
@@ -58,7 +57,7 @@ class BreweryController extends Controller
             'latitude' => 'required',
         ]);
 
-        $brewery = Brewery::find($id);
+        $brewery = Brewery::findOrFail($id);
         $brewery->update($validatedData);
 
         return redirect()->route('breweries.show', ['id' => $id])->with('message', 'Cervecería actualizada correctamente.')->with('code', 0);

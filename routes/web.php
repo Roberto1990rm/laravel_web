@@ -17,8 +17,7 @@ Route::get('/cervecerias/create', [BreweryController::class, 'create'])->name('b
 Route::post('/cervecerias/store', [BreweryController::class, 'store'])->name('breweries.store');
 
 Route::get('/cervecerias/edit/{id}', [BreweryController::class, 'edit'])->name('breweries.edit');
-Route::put('/cervecerias/update', [BreweryController::class, 'update'])->name('breweries.update');
-
+Route::put('/cervecerias/update/{id}', [BreweryController::class, 'update'])->name('breweries.update');
 
 Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('breweries.show');
 

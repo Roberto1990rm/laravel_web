@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="place" class="form-label">Localidad</label>
-                    <input type="text" class="form-control @error('place') is-invalid @enderror" id="place" name="place" value="{{ old('place', $brewery->localidad) }}" required/>
+                    <input type="text" class="form-control @error('place') is-invalid @enderror" id="place" name="place" value="{{ old('place', $brewery->poblacion) }}" required/>
                     @error('place')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -38,7 +38,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="longitude" class="form-label">Longitud</label>
-                    <input type="text" class="form-control @error('longitude') is-invalid @enderror" id="longitude" name="longitude" value="{{ old('longitude', $brewery->longitud) }}" required/>
+                    <input type="text" class="form-control @error('longitude') is-invalid @enderror" id="longitude" name="longitude" value="{{ old('longitude', $brewery->longitude) }}" required/>
                     @error('longitude')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -47,7 +47,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="latitude" class="form-label">Latitud</label>
-                    <input type="text" class="form-control @error('latitude') is-invalid @enderror" id="latitude" name="latitude" value="{{ old('latitude', $brewery->latitud) }}" required/>
+                    <input type="text" class="form-control @error('latitude') is-invalid @enderror" id="latitude" name="latitude" value="{{ old('latitude', $brewery->latitude) }}" required/>
                     @error('latitude')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -74,7 +74,6 @@
         </div>
     </div>
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function () {
             'use strict';
             const forms = document.querySelectorAll('.needs-validation');
