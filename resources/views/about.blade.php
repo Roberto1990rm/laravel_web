@@ -29,9 +29,9 @@
   </x-card>
 
   <div class="text-center mt-1 mb-5">
-    <a href="{{ route('home') }}" class="btn btn-primary rounded-pill" style="background: linear-gradient(to right, #94ea6695, #81a608); color: #FFFFFF; padding: 10px 20px;">
-      <i class="fas fa-home"></i>
-    </a>
+    <a class="nav-link" href="{{ route('home') }}" style="color: #04c9d7; margin-right: 5px;">
+      <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
+  </a>
   </div>
   
 </div>

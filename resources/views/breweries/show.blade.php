@@ -95,11 +95,13 @@
     <div class="map-container" style="padding-bottom: 10px;">
         <div id="map" style="height: 300px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);"></div>
     </div>
-    <div class="d-flex flex-column align-items-center" style="padding-bottom: 30px;">
-        <a href="{{ route('home') }}" class="btn btn-primary rounded-pill" style="background: linear-gradient(to right, #66ea90, #4ba278); color: #FFFFFF; padding: 10px 20px; margin-bottom: 10px;">
-            <i class="fas fa-home"></i>
+    <div class="d-flex flex-column align-items-center mb-5" style="padding-bottom: 30px;">
+        <a class="nav-link" href="{{ route('home') }}" style="color: #04c9d7; margin-right: 5px;">
+            <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
         </a>
     </div>
+    
+    
 
     <style>
         .carousel-image {

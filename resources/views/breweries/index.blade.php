@@ -16,15 +16,13 @@
         <div class="custom-card card mb-4 mt-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border-radius: 10px;">
             <img src="{{ asset('img/bar.jpg') }}" class="card-img-top" alt="{{ $brewery->nombre }}" style="padding: 5px;">
             <div class="card-body text-center">
-                <h5 class="card-title" style="color: #FF0000;">{{ $brewery->nombre }}</h5>
-                <p class="card-text"><i>{{ $brewery->descripcion }}</i></p>
+                <h5 class="card-title" style="color: #FF0000; text-decoration: none; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">{{ $brewery->nombre }}</h5>
+                <div class="description-box" style="background-color: #F8F8E0; border: 1px solid #CCC; border-radius: 5px; height: 100px; overflow-y: auto; padding: 5px; margin: 10px 0;">
+                    <p class="card-text" style="text-align: justify;">{{ $brewery->descripcion }}</p>
+                </div>
                 <p class="card-text"><b>{{ $brewery->poblacion }}</b></p>
                 <div class="d-flex flex-column align-items-center">
-                    <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary mb-2" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border: 2px solid #ff7b00; background: linear-gradient(to bottom, #e06c14db, #bba448, #01230f); color: #FFF; padding: 5px 10px; font-size: 85%; opacity: 0.8;">Ver más</a>
-                    <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    
+                    <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary mb-2" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border: 2px solid #ff7b00; background: linear-gradient(to bottom, #15fc04fd, #59b336, #28b361); color: #FFF; padding: 5px 10px; font-size: 85%; opacity: 0.8;">Ver más</a>
                 </div>
             </div>
         </div>
@@ -37,15 +35,10 @@
         <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm mb-3" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f7d304, #ffd000); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 6px 12px; line-height: 1; opacity: 0.75;">
             <span style="font-size: 14px; margin: 0 auto;">Añadir Cervecerías</span>
         </a>
-
-        <a href="{{ route('home') }}" class="btn btn-primary rounded-pill" style="background: linear-gradient(to right, #66ea90, #4ba278); color: #FFFFFF; padding: 10px 20px; margin-bottom: 10px;">
-            <i class="fas fa-home"></i>
+        <a class="nav-link" href="{{ route('home') }}" style="color: #138906; margin-right: 5px;">
+            <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
         </a>
     </div>
-</div>
-
-</div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>

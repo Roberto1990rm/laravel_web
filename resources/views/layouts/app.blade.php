@@ -50,28 +50,28 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}" style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
+                    <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}" style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(251, 251, 251, 0.992); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
                         <span style="border-bottom: 2px solid #050505;">Cervecerías</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}" style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
+                  <a class="nav-link active" aria-current="page" href="{{ route('breweries') }}" style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(253, 248, 248, 0.825); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
                     <span style="border-bottom: 2px solid #050505;">Cervezas</span>
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #f91505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
-                        <span style="border-bottom: 2px solid #fa3f07;">Contacto</span>
+                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #fb685e; text-shadow: 1px 1px 2px rgb(252, 250, 250); font-size: 0.85em;">
+                        <span style="border-bottom: 2px solid #fb685e;">Contacto</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about') }}" style="font-weight: bold; color:  #f91505; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-size: 0.85em;">
-                        <span style="border-bottom: 2px solid #f71509;">Quiénes somos</span>
+                    <a class="nav-link" href="{{ route('about') }}" style="font-weight: bold; color:  #fb685e; text-shadow: 1px 1px 2px rgb(251, 248, 248); font-size: 0.85em;">
+                        <span style="border-bottom: 2px solid #fb685e;">Quiénes somos</span>
                     </a>
                 </li>
                 <li class="nav-item" style="margin-left:px;">
-                    <a class="nav-link" href="{{ route('home') }}" style="color: #138906; margin-right: 5px;">
-                        <i class="fas fa-home"></i>
+                    <a class="nav-link" href="{{ route('home') }}" style="color: #04c9d7; margin-right: 5px;">
+                        <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
                     </a>
                 </li>
             </ul>
