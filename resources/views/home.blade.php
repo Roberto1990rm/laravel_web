@@ -65,12 +65,12 @@
 <div class="home-container">
     <a href="{{ route('breweries') }}">
         <video autoplay muted loop class="background-video full-width">
-            <source src="{{ asset('videos/fondoHome.mp4') }}" type="video/mp4">
+            <source src="{{ asset('videos/cerveVaso.mp4') }}" type="video/mp4">
             Tu navegador no soporta video HTML5.
         </video>
     </a>
 
-    <h1 class="custom-heading">Bienvenido al portal de cervecerías</h1>
+    <h1 class="custom-heading"><b>Bienvenido al portal de cervecerías</b></h1>
     <ul>
         @isset($breweries)
         @foreach ($breweries as $brewery)
@@ -80,10 +80,11 @@
     </ul>
 
     <div class="d-flex justify-content-center align-items-center position-relative">
-        <a href="{{ route('breweries') }}">
-            <img src="{{ asset('img/bar12.gif') }}" class="container-fluid opacity-90 shadow rounded-image">
-        </a>
-    </div>
+    <a href="{{ route('breweries') }}">
+        <img src="{{ asset('img/bar12.gif') }}" class="container-fluid rounded-image" style="opacity: 0.8; filter: alpha(opacity=50);">
+    </a>
+</div>
+
 
     <div class="enter-button mt-5 d-flex justify-content-center align-items-center" style="margin-bottom: 30px;">
         <a href="{{ route('breweries') }}" style="color: #FFFFFF; margin-right: 10px;">
@@ -91,9 +92,7 @@
         </a>
     </div>
 
-    <div class="fixed-icon" id="audio-toggle">
-        <i class="fas fa-volume-up"></i>
-    </div>
+   
 </div>
 
 <script>

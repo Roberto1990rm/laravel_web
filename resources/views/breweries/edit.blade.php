@@ -10,7 +10,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="nombre" value="{{ $brewery->nombre }}" required/>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="nombre" value="{{ old('nombre', $brewery->nombre) }}" required/>
                     @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -19,7 +19,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Descripción</label>
-                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="descripcion" required>{{ $brewery->descripcion }}</textarea>
+                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="descripcion" required>{{ old('descripcion', $brewery->descripcion) }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -28,7 +28,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="place" class="form-label">Localidad</label>
-                    <input type="text" class="form-control @error('place') is-invalid @enderror" id="place" name="poblacion" value="{{ $brewery->poblacion }}" required/>
+                    <input type="text" class="form-control @error('place') is-invalid @enderror" id="place" name="poblacion" value="{{ old('poblacion', $brewery->poblacion) }}" required/>
                     @error('place')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -36,8 +36,17 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <label for="street" class="form-label">Calle</label>
+                    <input type="text" class="form-control @error('street') is-invalid @enderror" id="street" name="calle" value="{{ old('calle', $brewery->calle) }}" required/>
+                    @error('street')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label for="longitude" class="form-label">Longitud</label>
-                    <input type="text" class="form-control @error('longitude') is-invalid @enderror" id="longitude" name="longitude" value="{{ $brewery->longitude }}" required/>
+                    <input type="text" class="form-control @error('longitude') is-invalid @enderror" id="longitude" name="longitude" value="{{ old('longitude', $brewery->longitude) }}" required/>
                     @error('longitude')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -46,7 +55,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="latitude" class="form-label">Latitud</label>
-                    <input type="text" class="form-control @error('latitude') is-invalid @enderror" id="latitude" name="latitude" value="{{ $brewery->latitude }}" required/>
+                    <input type="text" class="form-control @error('latitude') is-invalid @enderror" id="latitude" name="latitude" value="{{ old('latitude', $brewery->latitude) }}" required/>
                     @error('latitude')
                         <div class="invalid-feedback">
                             {{ $message }}

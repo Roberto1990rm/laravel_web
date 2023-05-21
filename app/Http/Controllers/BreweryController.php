@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Brewery;
+use Illuminate\Support\Facades\DB;
 
 class BreweryController extends Controller
 {
@@ -29,45 +29,63 @@ class BreweryController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'place' => 'required',
-            'description' => 'required',
-            'longitude' => 'required',
-            'latitude' => 'required',
+        $name = $request->input('nombre');
+        $place = $request->input('poblacion');
+        $description = $request->input('descripcion');
+        $calle = $request->input('calle');
+        $latitude = $request->input('latitude');
+        $longitude = $request->input('longitude');
+    
+        DB::table('breweries')->insert([
+            'nombre' => $name,
+            'poblacion' => $place,
+            'descripcion' => $description,
+            'calle' => $calle,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
         ]);
-
-        $brewery = Brewery::create($validatedData);
-
-        return redirect()->route('breweries.show', ['id' => $brewery->id])->with('message', 'Cervecería creada correctamente.')->with('code', 0);
+    
+        $brewery = new Brewery();
+        $brewery->nombre = $name;
+        $brewery->poblacion = $place;
+        $brewery->descripcion = $description;
+        $brewery->calle = $calle;
+        $brewery->latitude = $latitude;
+        $brewery->longitude = $longitude;
+        $brewery->save();
+    
+        return redirect()->route('breweries.show', ['id' => $brewery->id]);
     }
+    
 
     public function edit($id)
     {
         $brewery = Brewery::find($id);
+
         return view('breweries.edit', compact('brewery'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $id = $request->id;
-        $name = $request->nombre;
-        $place = $request->poblacion;
-        $description = $request->descripcion;
-        $longitude = $request->longitude;
-        $latitude = $request->latitude;
+        $validatedData = $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'poblacion' => 'required',
+            'calle' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
+        ]);
 
-        try {
-            DB::table('breweries')->where('id', $id)->update([
-                'nombre' => $name,
-                'poblacion' => $place,
-                'descripcion' => $description,
-                'longitude' => $longitude,
-                'latitude' => $latitude,
-            ]);
-        } catch (RuntimeException $e) {
-            return back()->with('message', 'Datos incorrectos')->with('code', 0);
-        }
+        $brewery = Brewery::find($id);
+
+        $brewery->nombre = $validatedData['nombre'];
+        $brewery->descripcion = $validatedData['descripcion'];
+        $brewery->poblacion = $validatedData['poblacion'];
+        $brewery->calle = $validatedData['calle'];
+        $brewery->longitude = $validatedData['longitude'];
+        $brewery->latitude = $validatedData['latitude'];
+
+        $brewery->save();
 
         return redirect()->route('breweries.show', ['id' => $id])->with('message', 'Cervecería actualizada correctamente.')->with('code', 0);
     }

@@ -27,11 +27,12 @@ body {
 
 .custom-heading {
     border-radius: 10px;
-    background-color: rgba(253, 246, 28, 0.3);
+    background-color: rgba(248, 247, 227, 0.3);
     box-shadow: 0 4px 6px rgba(33, 34, 1, 0.878);
     padding: 10px;
-    color: #101111; /* Ajusta el color del texto según sea necesario */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #080800; /* Ajusta el color del texto según sea necesario */
+    text-shadow: 2px 2px 4px rgba(247, 242, 242, 0.5);
+    margin-bottom: 50px;
 }
 
 .custom-card {
