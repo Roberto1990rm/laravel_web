@@ -70,7 +70,9 @@
                 </div>
                 <div class="card-body text-center">
                     <h5 class="card-title" style="color: #FF0000; font-family: 'Impact', sans-serif;">{{ $brewery->nombre }}</h5>
-                    <p class="card-text" style="text-align: justify;">{{ $brewery->descripcion }}</p>
+                    <div class="description-box" style="background-color: #F8F8E0; border: 1px solid #CCC; border-radius: 5px; height: 100px; overflow-y: auto; padding: 5px; margin: 10px 0;">
+                        <p class="card-text" style="text-align: justify;">{{ $brewery->descripcion }}</p>
+                    </div>
                     <p class="card-text">
                         <span class="font-weight-bold"><strong>Calle:</strong></span>
                         <span style="text-decoration: underline; display: inline-block; margin-left: 5px; font-family: 'Comic Sans MS', cursive;">{{ $brewery->calle }}</span>
