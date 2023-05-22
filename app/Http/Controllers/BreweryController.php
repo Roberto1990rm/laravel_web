@@ -29,38 +29,34 @@ class BreweryController extends Controller
 
     public function store(Request $request)
     {
-        $name = $request->input('nombre');
-        $place = $request->input('poblacion');
-        $description = $request->input('descripcion');
-        $calle = $request->input('calle');
-        $latitude = $request->input('latitude');
-        $longitude = $request->input('longitude');
-    
-        DB::table('breweries')->insert([
-            'nombre' => $name,
-            'poblacion' => $place,
-            'descripcion' => $description,
-            'calle' => $calle,
-            'latitude' => $latitude,
-            'longitude' => $longitude,
+        $validatedData = $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'poblacion' => 'required',
+            'calle' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
         ]);
-    
+
         $brewery = new Brewery();
-        $brewery->nombre = $name;
-        $brewery->poblacion = $place;
-        $brewery->descripcion = $description;
-        $brewery->calle = $calle;
-        $brewery->latitude = $latitude;
-        $brewery->longitude = $longitude;
+        $brewery->nombre = $validatedData['nombre'];
+        $brewery->descripcion = $validatedData['descripcion'];
+        $brewery->poblacion = $validatedData['poblacion'];
+        $brewery->calle = $validatedData['calle'];
+        $brewery->longitude = $validatedData['longitude'];
+        $brewery->latitude = $validatedData['latitude'];
         $brewery->save();
-    
-        return redirect()->route('breweries.show', ['id' => $brewery->id]);
+
+        return redirect()->route('breweries.show', ['id' => $brewery->id])->with('message', 'Cervecería creada correctamente.')->with('code', 0);
     }
-    
 
     public function edit($id)
     {
         $brewery = Brewery::find($id);
+
+        if (!$brewery) {
+            return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
+        }
 
         return view('breweries.edit', compact('brewery'));
     }
@@ -77,6 +73,10 @@ class BreweryController extends Controller
         ]);
 
         $brewery = Brewery::find($id);
+
+        if (!$brewery) {
+            return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
+        }
 
         $brewery->nombre = $validatedData['nombre'];
         $brewery->descripcion = $validatedData['descripcion'];

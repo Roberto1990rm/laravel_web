@@ -13,8 +13,9 @@ Route::get('/', function () {
 
 Route::get('/cervecerias', [BreweryController::class, 'index'])->name('breweries.index');
 
-Route::get('/cervecerias/create', [BreweryController::class, 'create'])->name('breweries.create');
-Route::post('/cervecerias/store', [BreweryController::class, 'store'])->name('breweries.store');
+Route::get('/breweries/{id}/edit', [BreweryController::class, 'edit'])->name('breweries.edit');
+Route::put('/breweries/{id}', [BreweryController::class, 'update'])->name('breweries.update');
+
 
 Route::get('/cervecerias/edit/{id}', [BreweryController::class, 'edit'])->name('breweries.edit');
 Route::post('/cervecerias/update/{id}', [BreweryController::class, 'update'])->name('breweries.update');
