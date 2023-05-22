@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset ('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d0a3551360.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         body {
             background-image: url("{{ asset('img/textura.jpg') }}");

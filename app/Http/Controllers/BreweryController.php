@@ -89,4 +89,35 @@ class BreweryController extends Controller
 
         return redirect()->route('breweries.show', ['id' => $id])->with('message', 'Cervecería actualizada correctamente.')->with('code', 0);
     }
+
+    /**public function delete($id)
+    {
+        // Buscar la cervecería por su ID
+        $brewery = Brewery::find($id);
+    
+        // Verificar si la cervecería existe
+        if (!$brewery) {
+            return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
+        }
+    
+        // Eliminar la cervecería
+        $brewery->delete();
+    
+        // Redirigir al index con un mensaje de éxito
+        return redirect()->route('breweries.index')->with('message', 'Cervecería eliminada correctamente.')->with('code', 0);
+    }*/
+
+/**public function destroy($id){
+    $brewery = DB::table('breweries')->find($id);
+
+    if (!$brewery) {
+        return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
+    }
+
+    DB::table('breweries')->where('id', $id)->delete();
+
+    return redirect()->route('breweries.index')->with('message', 'Cervecería eliminada correctamente.')->with('code', 0);
+}*/
+
+
 }
