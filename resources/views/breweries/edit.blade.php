@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Modificar cerveceria')
+@section('title', 'Modificar cervecería')
 
 @section('content')
 
@@ -10,7 +10,7 @@
 
             <h2 class="pt-3 pb-3">Modificar cervecería</h2>
 
-            <form method="POST" action="{{ route('breweries.update', ['id' => $brewery->id]) }}" class="needs-validation" novalidate>
+            <form method="POST" action="{{ route('breweries.update', ['id' => $brewery->id]) }}" class="needs-validation" novalidate enctype="multipart/form-data">
 
                 @csrf
 
@@ -44,7 +44,18 @@
                     <input type="text" class="form-control" id="latitude" name="latitude" value="{{ $brewery->latitude }}" required>
                 </div>
 
+                <div class="mb-3">
+                    <label for="imagen" class="form-label">Imagen</label>
+                    <input type="file" class="form-control" id="imagen" name="imagen">
+                </div>
+
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
+
+                
+              
+
+                <a href="{{ route('breweries.index') }}" class="btn btn-secondary">Volver al listado</a>
+
             </form>
         </div>
     </div>

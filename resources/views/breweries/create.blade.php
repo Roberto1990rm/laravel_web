@@ -9,7 +9,7 @@
     <div class="col-sm-6">
         <h2 class="pt-3 pb-3">Nueva cervecería</h2>
 
-        <form method="POST" action="{{ route('breweries.store') }}" class="needs-validation" novalidate>
+        <form method="POST" action="{{ route('breweries.store') }}" class="needs-validation" novalidate enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
@@ -52,6 +52,10 @@
                 <div class="invalid-feedback">
                     La latitud es obligatoria.
                 </div>
+            </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="imagen" name="imagen">
             </div>
 
             <div class="row mb-3">

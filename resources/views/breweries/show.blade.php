@@ -85,34 +85,7 @@
                         <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <button onclick="deleteBrewery({{ $brewery->id }})">Eliminar</button>
-
-<script>
-  function deleteBrewery(breweryId) {
-    if (confirm('¿Estás seguro de que deseas eliminar esta cervecería?')) {
-      // Realizar la solicitud de eliminación utilizando AJAX
-      fetch(`/breweries/${breweryId}`, {
-        method: 'DELETE',
-        headers: {
-          'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          // Recargar la página después de la eliminación
-          window.location.reload();
-        } else {
-          alert('Hubo un error al eliminar la cervecería.');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('Hubo un error al eliminar la cervecería.');
-      });
-    }
-  }
-</script>
-
+                       
                         <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
                             <i class="fas fa-arrow-left"></i>
                         </a>

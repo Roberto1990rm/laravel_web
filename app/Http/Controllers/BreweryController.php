@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Brewery;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class BreweryController extends Controller
 {
@@ -29,25 +30,31 @@ class BreweryController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'poblacion' => 'required',
-            'calle' => 'required',
-            'longitude' => 'required',
-            'latitude' => 'required',
-        ]);
-
         $brewery = new Brewery();
-        $brewery->nombre = $validatedData['nombre'];
-        $brewery->descripcion = $validatedData['descripcion'];
-        $brewery->poblacion = $validatedData['poblacion'];
-        $brewery->calle = $validatedData['calle'];
-        $brewery->longitude = $validatedData['longitude'];
-        $brewery->latitude = $validatedData['latitude'];
+    
+        // Asignar valores de los campos del formulario
+        $brewery->nombre = $request->input('nombre');
+        $brewery->descripcion = $request->input('descripcion');
+        $brewery->poblacion = $request->input('poblacion');
+        $brewery->calle = $request->input('calle');
+        $brewery->longitude = $request->input('longitude');
+        $brewery->latitude = $request->input('latitude');
+    
+        // Guardar la imagen
+        $image = $request->file('imagen');
+        if ($image) {
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $brewery->imagen = 'images/' . $imageName;
+        }
+    
+        // Guardar la cervecería
         $brewery->save();
-
-        return redirect()->route('breweries.show', ['id' => $brewery->id])->with('message', 'Cervecería creada correctamente.')->with('code', 0);
+    
+        // Redireccionar o realizar otras acciones después de guardar la cervecería
+        // ...
+    
+        return redirect()->route('breweries.index');
     }
 
     public function edit($id)
@@ -90,12 +97,10 @@ class BreweryController extends Controller
         return redirect()->route('breweries.show', ['id' => $id])->with('message', 'Cervecería actualizada correctamente.')->with('code', 0);
     }
 
-    /**public function delete($id)
+    public function destroy($id)
     {
-        // Buscar la cervecería por su ID
         $brewery = Brewery::find($id);
     
-        // Verificar si la cervecería existe
         if (!$brewery) {
             return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
         }
@@ -103,21 +108,6 @@ class BreweryController extends Controller
         // Eliminar la cervecería
         $brewery->delete();
     
-        // Redirigir al index con un mensaje de éxito
         return redirect()->route('breweries.index')->with('message', 'Cervecería eliminada correctamente.')->with('code', 0);
-    }*/
-
-/**public function destroy($id){
-    $brewery = DB::table('breweries')->find($id);
-
-    if (!$brewery) {
-        return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
     }
-
-    DB::table('breweries')->where('id', $id)->delete();
-
-    return redirect()->route('breweries.index')->with('message', 'Cervecería eliminada correctamente.')->with('code', 0);
-}*/
-
-
 }
