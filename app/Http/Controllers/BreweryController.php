@@ -4,17 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Brewery;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Storage;
 
 class BreweryController extends Controller
 {
-    public function index()
-    {
-        $breweries = Brewery::all();
 
-        return view('breweries.index', compact('breweries'));
+
+
+    
+    public function index()
+{
+    $breweries = Brewery::all();
+
+    // Asignar imagen por defecto si la imagen está vacía
+    foreach ($breweries as $brewery) {
+        if (empty($brewery->imagen)) {
+            $brewery->imagen = asset('storage/bar.jpg'); // Ruta de la imagen por defecto
+        }
     }
+
+    return view('breweries.index', compact('breweries'));
+}
+    
+
+    
 
     public function show($id)
     {
@@ -31,7 +44,7 @@ class BreweryController extends Controller
     public function store(Request $request)
     {
         $brewery = new Brewery();
-    
+
         // Asignar valores de los campos del formulario
         $brewery->nombre = $request->input('nombre');
         $brewery->descripcion = $request->input('descripcion');
@@ -39,22 +52,24 @@ class BreweryController extends Controller
         $brewery->calle = $request->input('calle');
         $brewery->longitude = $request->input('longitude');
         $brewery->latitude = $request->input('latitude');
-    
+
         // Guardar la imagen
-        $image = $request->file('imagen');
-        if ($image) {
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-            $brewery->imagen = 'images/' . $imageName;
+        if ($request->hasFile('imagen')) {
+            $image = $request->file('imagen');
+            $path = $image->store('brewery_images', 'public');
+            $brewery->imagen = $path;
+        } else {
+            // Si no se proporciona una nueva imagen, asignar la imagen por defecto
+            $brewery->imagen = 'bar.jpg';
         }
-    
+
         // Guardar la cervecería
         $brewery->save();
-    
+
         // Redireccionar o realizar otras acciones después de guardar la cervecería
         // ...
-    
-        return redirect()->route('breweries.index');
+
+        return redirect()->route('breweries.index')->with('success', 'Cervecería creada correctamente.');
     }
 
     public function edit($id)
@@ -77,6 +92,7 @@ class BreweryController extends Controller
             'calle' => 'required',
             'longitude' => 'required',
             'latitude' => 'required',
+            'imagen' => 'image',
         ]);
 
         $brewery = Brewery::find($id);
@@ -92,22 +108,52 @@ class BreweryController extends Controller
         $brewery->longitude = $validatedData['longitude'];
         $brewery->latitude = $validatedData['latitude'];
 
+        // Almacenar la nueva imagen solo si se proporciona una
+        if ($request->hasFile('imagen')) {
+            $image = $request->file('imagen');
+
+            // Eliminar la imagen anterior si existe
+            if ($brewery->imagen) {
+                Storage::delete('public/' . $brewery->imagen);
+            }
+
+            $path = $image->store('brewery_images', 'public');
+            $brewery->imagen = $path;
+        }
+
         $brewery->save();
 
-        return redirect()->route('breweries.show', ['id' => $id])->with('message', 'Cervecería actualizada correctamente.')->with('code', 0);
+        return redirect()->route('breweries.show', ['id' => $id])->with('success', 'Cervecería actualizada correctamente.');
     }
+
 
     public function destroy($id)
     {
         $brewery = Brewery::find($id);
-    
+
         if (!$brewery) {
             return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
         }
-    
+
+        // Eliminar la imagen si existe
+        if ($brewery->imagen) {
+            Storage::delete('public/' . $brewery->imagen);
+        }
+
         // Eliminar la cervecería
         $brewery->delete();
-    
-        return redirect()->route('breweries.index')->with('message', 'Cervecería eliminada correctamente.')->with('code', 0);
+
+        return redirect()->route('breweries.index')->with('success', 'Cervecería eliminada correctamente.');
     }
+
+    /**public function json()
+{
+    $breweries = Brewery::all();
+    return response()->json($breweries);
+}*/
+
+
+
 }
+
+

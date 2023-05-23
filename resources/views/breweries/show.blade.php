@@ -22,7 +22,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('img/bar.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/margarita.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 1</p>
                             </div>
@@ -81,13 +81,29 @@
                         <span class="font-weight-bold"><strong>{{ $brewery->poblacion }}</strong></span>
                         <span style="text-decoration: underline; display: inline-block; margin-left: 5px; font-family: 'Comic Sans MS', cursive;">{{ $brewery->ciudad }}</span>
                     </p>
-                    <div class="d-flex justify-content-center mt-4">
-                        <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
+                        
+                        <div class="d-flex justify-content-center mt-4">
+                            <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
                             <i class="fas fa-edit"></i>
                         </a>
+
+
+
+                            <form method="POST" action="{{ route('breweries.destroy', $brewery) }}" >
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger rounded-circle me-3" onclick="return confirm('¿Estás seguro de eliminar esta cervecería?')" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                            <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                        
                        
-                        <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
-                            <i class="fas fa-arrow-left"></i>
+                        
+
                         </a>
                     </div>
                 </div>

@@ -63,7 +63,7 @@
 </style>
 
 <div class="home-container">
-    <a href="{{ route('breweries') }}">
+    <a href="{{ route('breweries.index') }}">
         <video autoplay muted loop class="background-video full-width">
             <source src="{{ asset('videos/cerveVaso.mp4') }}" type="video/mp4">
             Tu navegador no soporta video HTML5.
@@ -80,14 +80,14 @@
     </ul>
 
     <div class="d-flex justify-content-center align-items-center position-relative">
-    <a href="{{ route('breweries') }}">
+    <a href={{ route('breweries.index') }}>
         <img src="{{ asset('img/bar12.gif') }}" class="container-fluid rounded-image" style="opacity: 0.8; filter: alpha(opacity=50);">
     </a>
 </div>
 
 
     <div class="enter-button mt-5 d-flex justify-content-center align-items-center" style="margin-bottom: 30px;">
-        <a href="{{ route('breweries') }}" style="color: #FFFFFF; margin-right: 10px;">
+        <a href="{{ route('breweries.index') }}" style="color: #FFFFFF; margin-right: 10px;">
             <i class="enter-icon fas fa-sign-in-alt"></i>
         </a>
     </div>

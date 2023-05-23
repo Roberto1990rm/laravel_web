@@ -49,12 +49,12 @@
                     <input type="file" class="form-control" id="imagen" name="imagen">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <button type="submit" class="btn btn-primary m-4">Guardar cambios</button>
 
                 
               
 
-                <a href="{{ route('breweries.index') }}" class="btn btn-secondary">Volver al listado</a>
+                <a href="{{ route('breweries.index') }}" class="btn btn-secondary m-4 mb-5">Volver al listado</a>
 
             </form>
         </div>

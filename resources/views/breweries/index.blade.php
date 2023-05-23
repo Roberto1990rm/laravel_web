@@ -16,10 +16,12 @@
         <div class="custom-card card mb-4 mt-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border-radius: 10px;">
             <div class="card-body text-center">
                 @if ($brewery->imagen)
-                    <img src="{{ asset($brewery->imagen) }}" class="card-img-top rounded" alt="{{ $brewery->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
-                @else
-                    <img src="{{ asset('img/bar.jpg') }}" class="card-img-top rounded" alt="{{ $brewery->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
-                @endif
+    <img src="{{ url('storage/' . $brewery->imagen) }}" class="card-img-top rounded" alt="{{ $brewery->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
+@else
+    <img src="{{ asset('storage/bar.jpg') }}" class="card-img-top rounded" alt="{{ $brewery->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
+@endif
+
+
                 <h5 class="card-title" style="color: #FF0000; text-decoration: none; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">{{ $brewery->nombre }}</h5>
                 <div class="description-box" style="background-color: #F8F8E0; border: 1px solid #CCC; border-radius: 5px; height: 100px; overflow-y: auto; padding: 5px; margin: 10px 0;">
                     <p class="card-text" style="text-align: justify;">{{ $brewery->descripcion }}</p>
@@ -52,11 +54,13 @@
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
-    map.setZoom(5);
+    map.setZoom(5); 
 
-    @foreach ($breweries as $brewery)
-        L.marker([{{ $brewery->latitude }}, {{ $brewery->longitude }}]).addTo(map)
-            .bindPopup("{{ $brewery->nombre }} - {{ $brewery->poblacion }}");
-    @endforeach
+    var breweries = @json($breweries);
+
+    breweries.forEach(function(brewery) {
+        L.marker([brewery.latitude, brewery.longitude]).addTo(map)
+            .bindPopup(brewery.nombre + ' - ' + brewery.poblacion);
+    });
 </script>
 @endsection

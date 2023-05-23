@@ -12,6 +12,8 @@
             @else
             @isset($urlImg)
             <img src="{{ $urlImg }}" alt="{{ $name }}">
+            @else
+            <img src="{{ asset('img/bar.jpg') }}" alt="Default Card Image">
             @endisset
             @endisset
 
