@@ -22,11 +22,11 @@
 @endif
 
 
-                <h5 class="card-title" style="color: #FF0000; text-decoration: none; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">{{ $brewery->nombre }}</h5>
+                <h4 class="card-title" style="color: #FF0000; text-decoration: none; text-shadow: 0 2px 4px rgba(228, 222, 222, 0.987); padding-top: 10px;"><b>{{ $brewery->nombre }}</b></h4>
                 <div class="description-box" style="background-color: #F8F8E0; border: 1px solid #CCC; border-radius: 5px; height: 100px; overflow-y: auto; padding: 5px; margin: 10px 0;">
                     <p class="card-text" style="text-align: justify;">{{ $brewery->descripcion }}</p>
                 </div>
-                <p class="card-text"><b>{{ $brewery->poblacion }}</b></p>
+                <p class="card-text"><i><h6>{{ $brewery->poblacion }}</h6></i></p>
                 <div class="d-flex flex-column align-items-center">
                     <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary mb-2" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border: 2px solid #ff7b00; background: linear-gradient(to bottom, #15fc04fd, #59b336, #28b361); color: #FFF; padding: 5px 10px; font-size: 85%; opacity: 0.8;">Ver más</a>
                 </div>

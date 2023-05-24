@@ -14,7 +14,7 @@ class BreweryController extends Controller
     
     public function index()
 {
-    $breweries = Brewery::all();
+    $breweries = Brewery::orderBy('nombre')->get();
 
     // Asignar imagen por defecto si la imagen está vacía
     foreach ($breweries as $brewery) {
