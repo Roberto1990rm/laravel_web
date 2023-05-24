@@ -9,6 +9,9 @@
     <div class="col-sm-6">
         <h2 class="pt-3 pb-3">Nueva cervecería</h2>
 
+
+
+
         <form method="POST" action="{{ route('breweries.store') }}" class="needs-validation" novalidate enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

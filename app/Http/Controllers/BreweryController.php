@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\BreweryRequest;
 use Illuminate\Http\Request;
 use App\Models\Brewery;
 use Illuminate\Support\Facades\Storage;
@@ -41,7 +43,7 @@ class BreweryController extends Controller
         return view('breweries.create');
     }
 
-    public function store(Request $request)
+    public function store(BreweryRequest $request)
     {
         $brewery = new Brewery();
 
@@ -83,7 +85,7 @@ class BreweryController extends Controller
         return view('breweries.edit', compact('brewery'));
     }
 
-    public function update(Request $request, $id)
+    public function update(BreweryRequest $request, Brewery $brewery)
     {
         $validatedData = $request->validate([
             'nombre' => 'required',
