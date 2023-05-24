@@ -85,7 +85,7 @@ class BreweryController extends Controller
         return view('breweries.edit', compact('brewery'));
     }
 
-    public function update(BreweryRequest $request, Brewery $brewery)
+    public function update(BreweryRequest $request, $id)
     {
         $validatedData = $request->validate([
             'nombre' => 'required',
