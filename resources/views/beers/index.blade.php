@@ -30,7 +30,7 @@
                 </div>
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
                 <div class="d-flex flex-column align-items-center">
-                    <a href="{{ route('breweries.show', $beer) }}" class="btn btn-primary mb-2" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border: 2px solid #ff7b00; background: linear-gradient(to bottom, #15fc04fd, #59b336, #28b361); color: #FFF; padding: 5px 10px; font-size: 85%; opacity: 0.8;">Ver más</a>
+                    <a href="{{ route('beers.show', $beer) }}" class="btn btn-primary mb-2" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border: 2px solid #ff7b00; background: linear-gradient(to bottom, #15fc04fd, #59b336, #28b361); color: #FFF; padding: 5px 10px; font-size: 85%; opacity: 0.8;">Ver más</a>
                 </div>
             </div>
         </div>

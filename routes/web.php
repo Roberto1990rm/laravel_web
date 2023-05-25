@@ -35,6 +35,7 @@ Route::delete('/breweries/{id}', [BreweryController::class, 'destroy'])->name('b
 Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('breweries.show');
 
 Route::resource('/beers', BeerController::class)->parameters(["beers"]);
+Route::get('/cerveza/{id}', 'BeerController@show')->name('beer.show');
 
 
 
