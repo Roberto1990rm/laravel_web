@@ -115,8 +115,9 @@
         <div id="map" style="height: 300px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);"></div>
     </div>
     <div class="d-flex flex-column align-items-center mb-5" style="padding-bottom: 30px;">
-        <a class="nav-link" href="{{ route('home') }}" style="color: #04c9d7; margin-right: 5px;">
+        <a class="nav-link" href="{{ route('home') }}" style="color: #138906; margin-right: 5px; text-decoration: none;">
             <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
+            Inicio
         </a>
     </div>
     

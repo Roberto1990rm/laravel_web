@@ -85,6 +85,19 @@
     </a>
 </div>
 
+<div class="card-header">{{ __('Bienvenidos') }}</div>
+
+<div class="card-body">
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+
+    {{ __('Aquí encontraras lo mejor de todas la variedades de cebadas') }}
+</div>
+</div>
+
 
     <div class="enter-button mt-5 d-flex justify-content-center align-items-center" style="margin-bottom: 30px;">
         <a href="{{ route('breweries.index') }}" style="color: #FFFFFF; margin-right: 10px;">

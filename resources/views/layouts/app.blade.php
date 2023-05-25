@@ -23,12 +23,14 @@
             background-position: center center;
             background-attachment: fixed;
             background-color: #f1f1f1;
+            
         }
         .navbar {
             background-image: url("{{ asset('img/burbujas.jpg') }}");
             background-repeat: repeat-x;
             border: 3px solid #cdd0cb;
             box-shadow: 0 4px 6px rgba(33, 34, 1, 0.878);
+            opacity: 0.9;
         }
         .card {
             background-image: url("{{ asset('img/burbujas.jpg') }}");
@@ -71,10 +73,44 @@
                         <span style="border-bottom: 2px solid #fb685e;">Quiénes somos</span>
                     </a>
                 </li>
-                <li class="nav-item" style="margin-left:px;">
-                    <a class="nav-link" href="{{ route('home') }}" style="color: #04c9d7; margin-right: 5px;">
-                        <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
-                    </a>
+                <li class="nav-item ms-5" style="margin-left:px;">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Salir') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+                
+            </div>
                 </li>
             </ul>
         </div>

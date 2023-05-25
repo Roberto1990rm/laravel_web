@@ -46,8 +46,9 @@
     </div>
 </div>
 <div class="text-center mt-2 mb-5">
-    <a class="nav-link" href="{{ route('home') }}" style="color: #04c9d7; margin-right: 5px;">
+    <a class="nav-link" href="{{ route('home') }}" style="color: #138906; margin-right: 5px; text-decoration: none;">
         <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
+        Inicio
     </a>
   </div>
   

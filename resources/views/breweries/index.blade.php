@@ -38,12 +38,15 @@
 
 <div class="text-center mb-5 p-5">
     <div class="d-flex flex-column align-items-center">
-        <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm mb-3" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f7d304, #ffd000); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #333; border-radius: 8px; padding: 6px 12px; line-height: 1; opacity: 0.75;">
-            <span style="font-size: 14px; margin: 0 auto;">Añadir Cervecerías</span>
+        <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm mb-3" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom right, #f7d304, #ffd000); box-shadow: 0 4px 8px #0000004d; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; color: #fff; opacity: 0.9;">
+            Añadir Cervecerías
         </a>
-        <a class="nav-link" href="{{ route('home') }}" style="color: #138906; margin-right: 5px;">
+        
+        <a class="nav-link" href="{{ route('home') }}" style="color: #138906; margin-right: 5px; text-decoration: none;">
             <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
+            Inicio
         </a>
+        
     </div>
 </div>
 
