@@ -13,6 +13,9 @@ class BeerController extends Controller
     public function index()
     {
         //
+        $beers = beer::orderBy('marca')->get();
+
+        return view ('beers.index', compact ('beers'));
     }
 
     /**
