@@ -19,12 +19,19 @@ Route::get('/', function() {
 
 Route::get('/cervecerias', [BreweryController::class, 'index'])->name('breweries.index');
 
+
+Route::group(['middleware' => 'auth'], function () {
+    
 Route::get('/cervecerias/create', [BreweryController::class, 'create'])->name('breweries.create');
 Route::post('/cervecerias/store', [BreweryController::class, 'store'])->name('breweries.store');
+Route::get('/cervecerias/edit/{id}', [BreweryController::class, 'edit'])->name('breweries.edit');
+Route::post('/cervecerias/update/{id}', [BreweryController::class, 'update'])->name('breweries.update');
+Route::delete('/breweries/{id}', [BreweryController::class, 'destroy'])->name('breweries.destroy');
+
+});
 
 
 Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('breweries.show');
-
 
 Route::get('/cervecerias/edit/{id}', [BreweryController::class, 'edit'])->name('breweries.edit');
 Route::post('/cervecerias/update/{id}', [BreweryController::class, 'update'])->name('breweries.update');

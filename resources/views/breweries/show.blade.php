@@ -81,14 +81,14 @@
                         <span class="font-weight-bold"><strong>{{ $brewery->poblacion }}</strong></span>
                         <span style="text-decoration: underline; display: inline-block; margin-left: 5px; font-family: 'Comic Sans MS', cursive;">{{ $brewery->ciudad }}</span>
                     </p>
+                    @auth
+                        @if($brewery->author == Auth::user()->id)
                         
+                    
                         <div class="d-flex justify-content-center mt-4">
                             <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
                             <i class="fas fa-edit"></i>
                         </a>
-
-
-
                             <form method="POST" action="{{ route('breweries.destroy', $brewery) }}" >
                                 @csrf
                                 @method('DELETE')
@@ -96,6 +96,11 @@
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
+
+                            @endif
+                        @endauth
+
+
                             <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
                                 <i class="fas fa-arrow-left"></i>
                             </a>

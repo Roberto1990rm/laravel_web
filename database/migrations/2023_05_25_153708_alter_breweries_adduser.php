@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('breweries', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('breweries', function (Blueprint $table) {
+            $table->bigInteger('author')->nullable();
         });
     }
 
@@ -22,6 +21,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('breweries');
+        //
+        Schema::table('breweries', function (Blueprint $table) {
+            $table->dropColumn('author')->nullable();
+            });
     }
 };
+

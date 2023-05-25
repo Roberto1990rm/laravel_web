@@ -7,7 +7,7 @@ use App\Http\Requests\BreweryRequest;
 use Illuminate\Http\Request;
 use App\Models\Brewery;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Auth;
 class BreweryController extends Controller
 {
 
@@ -64,6 +64,8 @@ class BreweryController extends Controller
             // Si no se proporciona una nueva imagen, asignar la imagen por defecto
             $brewery->imagen = 'bar.jpg';
         }
+
+        $brewery->author = Auth::id();
 
         // Guardar la cervecería
         $brewery->save();

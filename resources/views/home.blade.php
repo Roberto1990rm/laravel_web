@@ -108,24 +108,6 @@
    
 </div>
 
-<script>
-    const audioToggle = document.getElementById('audio-toggle');
-    const backgroundVideo = document.querySelector('.background-video');
-    const backgroundAudio = document.querySelector('audio');
 
-    audioToggle.addEventListener('click', function() {
-        if (backgroundVideo.muted) {
-            backgroundVideo.muted = false;
-            backgroundAudio.muted = false;
-            audioToggle.classList.remove('fa-volume-off');
-            audioToggle.classList.add('fa-volume-up');
-        } else {
-            backgroundVideo.muted = true;
-            backgroundAudio.muted = true;
-            audioToggle.classList.remove('fa-volume-up');
-            audioToggle.classList.add('fa-volume-off');
-        }
-    });
-</script>
 
 @endsection
