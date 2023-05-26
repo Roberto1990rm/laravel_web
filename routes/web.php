@@ -28,25 +28,23 @@ Route::post('/cervecerias/store', [BreweryController::class, 'store'])->name('br
 Route::get('/cervecerias/edit/{id}', [BreweryController::class, 'edit'])->name('breweries.edit');
 Route::post('/cervecerias/update/{id}', [BreweryController::class, 'update'])->name('breweries.update');
 Route::delete('/breweries/{id}', [BreweryController::class, 'destroy'])->name('breweries.destroy');//si es incorrecta es destoy más abajo comentada.
-
 });
 
 
+
+
 Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('breweries.show');
-
 Route::resource('/beers', BeerController::class)->parameters(["beers"]);
-Route::get('/cerveza/{id}', 'BeerController@show')->name('beer.show');
 
 
-
-Route::get('/cervecerias/edit/{id}', [BreweryController::class, 'edit'])->name('breweries.edit');
-Route::post('/cervecerias/update/{id}', [BreweryController::class, 'update'])->name('breweries.update');
+Route::get('/beers/edit/{id}', [BeerController::class, 'edit'])->name('beers.edit');
+Route::post('/beers/update/{id}', [BeerController::class, 'update'])->name('beers.update');
 
 
 
 
 
-
+Route::get('/beers/{id}', [BeerController::class, 'show'])->name('beers.show');
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

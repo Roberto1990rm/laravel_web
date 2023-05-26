@@ -18,7 +18,7 @@
                 @if ($brewery->imagen)
     <img src="{{ url('storage/' . $brewery->imagen) }}" class="card-img-top rounded" alt="{{ $brewery->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
 @else
-    <img src="{{ asset('storage/bar.jpg') }}" class="card-img-top rounded" alt="{{ $brewery->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
+<img src="{{ asset('img/birras.jpeg') }}" class="card-img-top rounded" alt="{{ $beer->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
 @endif
 
 

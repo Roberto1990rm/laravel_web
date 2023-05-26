@@ -45,6 +45,9 @@
                     <p class="card-text" style="text-align: justify;">{{ $beer->descripcion }}</p>
                 </div>
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
+                <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
+                    <i class="fas fa-edit"></i>
+                </a>
                 <a href="{{ route('beers.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
                     <i class="fas fa-arrow-left"></i>
                 </a>

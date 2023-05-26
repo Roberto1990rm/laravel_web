@@ -54,8 +54,6 @@
                 <button type="submit" class="btn btn-primary me-3">Guardar cambios</button>
 
                 
-              
-
                 <a href="{{ route('breweries.index') }}" class="btn btn-secondary">Volver al listado</a>
 
                 </div>
