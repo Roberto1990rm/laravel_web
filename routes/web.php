@@ -39,7 +39,7 @@ Route::resource('/beers', BeerController::class)->parameters(["beers"]);
 
 Route::get('/beers/edit/{id}', [BeerController::class, 'edit'])->name('beers.edit');
 Route::post('/beers/update/{id}', [BeerController::class, 'update'])->name('beers.update');
-
+Route::delete('/beers/{id}', [BeeryController::class, 'destroy'])->name('beers.destroy');
 
 
 

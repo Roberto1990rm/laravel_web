@@ -7,9 +7,9 @@
 <h1 class="custom-heading">Aquí vienen las cervezas</h1>
 
 
-<div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center mb-4 p-0">
     <div class="col-sm-4">
-        <div class="custom-card card mb-4 mt-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border-radius: 10px;">
+        <div class="custom-card1 card mb-4 mt-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border-radius: 10px;">
             <div class="card-body text-center">
                 @if ($beer->imagen)
                     <img src="{{ url('storage/' . $beer->imagen) }}" class="card-img-top rounded" alt="{{ $beer->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
@@ -45,9 +45,18 @@
                     <p class="card-text" style="text-align: justify;">{{ $beer->descripcion }}</p>
                 </div>
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
-                <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
+                <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-0" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
                     <i class="fas fa-edit"></i>
                 </a>
+                <form method="POST" action="{{ route('beers.destroy', $beer) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger rounded-circle me-0" onclick="return confirm('¿Estás seguro de eliminar esta cervecería?')" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+
+               
                 <a href="{{ route('beers.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
                     <i class="fas fa-arrow-left"></i>
                 </a>

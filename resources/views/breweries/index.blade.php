@@ -10,7 +10,7 @@
     <div id="map" style="width: 100%; height: 300px; border-radius: 10px; margin-bottom: -50px;"></div>
 </div>
 
-<div class="row">
+<div class="row m-3">
     @foreach ($breweries as $brewery)
     <div class="col-sm-4">
         <div class="custom-card card mb-4 mt-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border-radius: 10px;">

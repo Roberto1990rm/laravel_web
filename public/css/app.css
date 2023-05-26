@@ -36,6 +36,18 @@ body {
     margin-top: 20px;
 }
 
+
+.custom-card1 img.vertical-img-top  {
+    width: 460px;
+    height: 500px; /* Ajusta la altura deseada */
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover; /* Ajusta la imagen al contenedor sin distorsión */
+    box-shadow: 0 8px 16px rgba(249, 246, 246, 0.3);
+    opacity: 0.95;
+}
+
+
 .custom-card {
     background: linear-gradient(135deg, #D2F7C7, #FDECEC);
     border-radius: 10px;

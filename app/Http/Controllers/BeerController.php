@@ -100,14 +100,23 @@ class BeerController extends Controller
 }
 
 
-    public function destroy(Beer $beer)
-    {
-        //
+public function destroy($id)
+{
+    $beer = Beer::find($id);
+
+    if (!$beer) {
+        return redirect()->route('beers.index')->with('message', 'Cerveza no encontrada.')->with('code', 1);
     }
 
+    // Eliminar la imagen si existe
+    if ($beer->imagen) {
+        Storage::disk('public')->delete('beer_images/' . $beer->imagen);
+    }
 
+    // Eliminar la cervecería
+    $beer->delete();
 
-
-
+    return redirect()->route('beers.index')->with('success', 'Cerveza eliminada correctamente.');
+}
 
 }
