@@ -25,15 +25,38 @@ class BeerController extends Controller
      */
     public function create()
     {
-        //
+        return view('beers.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $beer = new Beer();
+
+        // Asignar valores de los campos del formulario
+        $beer->nombre = $request->input('nombre');
+        $beer->descripcion = $request->input('descripcion');
+        $beer->marca = $request->input('marca');
+        $beer->vol = $request->input('vol');
+
+        // Guardar la imagen
+        if ($request->hasFile('imagen')) {
+            $image = $request->file('imagen');
+            $path = $image->store('beer_images', 'public');
+            $beer->imagen = $path;
+        } else {
+            // Si no se proporciona una nueva imagen, asignar la imagen por defecto
+            $beer->imagen = 'bar.jpg';
+        }
+
+        
+
+        // Guardar la cervecería
+        $beer->save();
+
+        // Redireccionar o realizar otras acciones después de guardar la cervecería
+        // ...
+
+        return redirect()->route('beers.index')->with('success', 'Cerveza creada correctamente.');
     }
 
     /**

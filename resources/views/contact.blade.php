@@ -3,7 +3,7 @@
 @section('title', 'Contacta con nosotros')
 
 @section('content')
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mt-5">
     <div class="col-sm-6">
         <h2 class="mt-3">Contacta con nosotros</h2>
 

@@ -36,32 +36,27 @@
                     
                 </h6>
                 
-               
-
-
-
-
                 <div class="description-box" style="background-color: #F8F8E0; border: 1px solid #CCC; border-radius: 5px; height: 100px; overflow-y: auto; padding: 5px; margin: 10px 0;">
                     <p class="card-text" style="text-align: justify;">{{ $beer->descripcion }}</p>
                 </div>
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
-                <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-0" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
-                    <i class="fas fa-edit"></i>
-                </a>
-                <form method="POST" action="{{ route('beers.destroy', $beer) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger rounded-circle me-0" onclick="return confirm('¿Estás seguro de eliminar esta cervecería?')" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </form>
 
-               
-                <a href="{{ route('beers.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
-                    <i class="fas fa-arrow-left"></i>
-                </a>
+                <div class="d-flex justify-content-center">
+                    <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-2" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <form method="POST" action="{{ route('beers.destroy', $beer) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger rounded-circle me-2" onclick="return confirm('¿Estás seguro de eliminar esta cervecería?')" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                    <a href="{{ route('beers.index') }}" class="btn btn-primary rounded-circle" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
             </div>
-            
         </div>
     </div>
 </div>
