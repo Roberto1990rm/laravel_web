@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Beer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class BeerController extends Controller
 {
@@ -59,46 +61,45 @@ class BeerController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'marca' => 'required',
-            'vol' => 'required',
-            'imagen' => 'image', // Changed 'imagen' to 'image'
-        ]);
+{
+    $validatedData = $request->validate([
+        'nombre' => 'required',
+        'descripcion' => 'required',
+        'marca' => 'required',
+        'vol' => 'required',
+        'imagen' => 'image',
+    ]);
 
-        $beer = Beer::find($id);
+    $beer = Beer::find($id);
 
-        if (!$beer) {
-            return redirect()->route('beers.index')->with('message', 'Cerveza no encontrada.')->with('code', 1);
-        }
-
-        $beer->nombre = $validatedData['nombre'];
-        $beer->descripcion = $validatedData['descripcion'];
-        $beer->marca = $validatedData['marca'];
-        $beer->vol = $validatedData['vol'];
-
-        // Almacenar la nueva imagen solo si se proporciona una
-        if ($request->hasFile('imagen')) {
-            $image = $request->file('imagen');
-
-            // Eliminar la imagen anterior si existe
-            if ($beer->imagen) {
-                Storage::delete('public/' . $beer->imagen);
-            }
-
-            $path = $image->store('beer_images', 'public');
-            $beer->imagen = $path;
-        }
-
-        $beer->save();
-
-        return redirect()->route('beers.index')->with('success', 'Cerveza actualizada correctamente.');
+    if (!$beer) {
+        return redirect()->route('beers.index')->with('message', 'Cerveza no encontrada.')->with('code', 1);
     }
-    /**
-     * Remove the specified resource from storage.
-     */
+
+    $beer->nombre = $validatedData['nombre'];
+    $beer->descripcion = $validatedData['descripcion'];
+    $beer->marca = $validatedData['marca'];
+    $beer->vol = $validatedData['vol'];
+
+    // Almacenar la nueva imagen solo si se proporciona una
+    if ($request->hasFile('imagen')) {
+        $image = $request->file('imagen');
+
+        // Eliminar la imagen anterior si existe
+        if ($beer->imagen) {
+            Storage::disk('public')->delete('beer_images/' . $beer->imagen);
+        }
+
+        $path = $image->store('beer_images', 'public');
+        $beer->imagen = $path;
+    }
+
+    $beer->save();
+
+    return redirect()->route('beers.show', ['id' => $id])->with('success', 'Cerveza actualizada correctamente.');
+}
+
+
     public function destroy(Beer $beer)
     {
         //
