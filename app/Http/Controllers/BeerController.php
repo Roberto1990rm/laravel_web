@@ -67,4 +67,10 @@ class BeerController extends Controller
     {
         //
     }
+
+
+
+
+
+
 }

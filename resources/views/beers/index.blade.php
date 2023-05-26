@@ -19,18 +19,37 @@
                 @if ($beer->imagen)
     <img src="{{ url('storage/' . $beer->imagen) }}" class="card-img-top rounded" alt="{{ $beer->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
 @else
-    <img src="{{ asset('storage/bar.jpg') }}" class="card-img-top rounded" alt="{{ $beer->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
+<img src="{{ asset('img/default-beer.jpg') }}" class="card-img-top rounded" alt="{{ $beer->nombre }}" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
+
 @endif
 
 
                 <h5 class="card-title" style="color: #301010; text-decoration: none; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.987); padding-top: 10px;"><b>{{ $beer->nombre }}</b></h5>
-                <h6 class="card-title" style="color: #535151; text-decoration: none; text-shadow: 0 2px 4px rgba(228, 222, 222, 0.987); padding-top: 10px;"><b>{{ $beer->vol }}°</b></h6>
+                <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
+               
+                
                 <div class="description-box" style="background-color: #F8F8E0; border: 1px solid #CCC; border-radius: 5px; height: 100px; overflow-y: auto; padding: 5px; margin: 10px 0;">
                     <p class="card-text" style="text-align: justify;">{{ $beer->descripcion }}</p>
                 </div>
-                <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
+                
                 <div class="d-flex flex-column align-items-center">
-                    <a href="{{ route('beers.show', $beer) }}" class="btn btn-primary mb-2" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border: 2px solid #ff7b00; background: linear-gradient(to bottom, #15fc04fd, #59b336, #28b361); color: #FFF; padding: 5px 10px; font-size: 85%; opacity: 0.8;">Ver más</a>
+                     
+                    <h6 class="card-title" style="color: #535151; text-decoration: none; text-shadow: 0 2px 4px rgba(228, 222, 222, 0.987); padding-top: 10px;">
+                        <b>{{ $beer->vol }}°</b>
+                        <div class="place">
+                            @php
+                                $beerCount = 5;
+                            @endphp
+                        
+                            @for ($i = 0; $i < $beerCount; $i++)
+                                @if ($beer->vol >= ($i + 1) * 2)
+                                    <img src="{{ asset('img/logo.webp') }}" alt="Logo" style="width: 30px; height: 30px; margin-right: 5px;">
+                                @else
+                                    <img src="{{ asset('img/logo.webp') }}" alt="Logo" style="width: 30px; height: 30px; margin-right: 5px; opacity: 0.4;">
+                                @endif
+                            @endfor
+                        </div>
+                    <a href="{{ route('beers.show', $beer) }}" class="btn btn-primary mt-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border: 2px solid #ff7b00; background: linear-gradient(to bottom, #15fc04fd, #59b336, #28b361); color: #FFF; padding: 5px 10px; font-size: 85%; opacity: 0.8;">Ver más</a>
                 </div>
             </div>
         </div>

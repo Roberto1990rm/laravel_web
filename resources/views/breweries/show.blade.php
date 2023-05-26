@@ -22,13 +22,13 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('img/margarita.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/default-beer.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 1</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/margarita.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/wines.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 2</p>
                             </div>
@@ -46,13 +46,13 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/margarita.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/wines.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 5</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/restaurant.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/wines.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 6</p>
                             </div>
