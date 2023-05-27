@@ -17,7 +17,7 @@
 
     <style>
         body {
-            background-image: url("{{ asset('img/textura.jpg') }}");
+            background-image: url("{{ asset('img/madera.jpeg') }}");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center center;
@@ -46,6 +46,12 @@
         .navbar-nav .nav-link:hover,
         .navbar-nav .nav-link:focus {
             color: #000;
+        }
+
+        .navbar-nav .nav-link:nth-child(3),
+        .navbar-nav .nav-link:nth-child(4) {
+            color: #fff;
+            font-size: 0.8em;
         }
 
         .footer {
@@ -90,10 +96,10 @@
                         <a class="nav-link" href="{{ route('beers.index') }}">Cervezas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('contact.create') }}">Contacto</a>
+                        <a class="nav-link" href="{{ route('contact.create') }}" style="color: #bab7b7; font-size: 0.8em;">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('about') }}">Quiénes somos</a>
+                        <a class="nav-link" href="{{ route('about') }}" style="color: #c5c0c0; font-size: 0.8em;">Quiénes somos</a>
                     </li>
                     <li class="nav-item ms-5">
                         <ul class="navbar-nav ms-auto">

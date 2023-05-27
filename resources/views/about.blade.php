@@ -4,7 +4,7 @@
 
 <h1 class="custom-heading">Quiénes somos</h1>
 
-<div class="d-flex flex-column align-items-center mt-5 pt-5">
+<div class="d-flex flex-column align-items-center mt-3 pt-5">
   <x-card name="Cervelab" map="s" urlImg="$urlImg" style="width: 100%; max-width: 600px; box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);">
     <x-slot name="place">
       Somos un agregador de las mejores cervecerías de España

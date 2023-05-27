@@ -148,9 +148,9 @@
     Solo los usuarios registrados pueden añadir cervecerías
     @endguest
 
-    <a class="nav-link" href="{{ route('home') }}" style="color: #138906; margin-right: 5px; text-decoration: none;">
-        <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
-        Inicio
+    <a class="nav-link" href="{{ route('home') }}" style="color: #dbd40c; margin-right: 5px; text-decoration: none;">
+        <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(8, 0, 0, 0.5);"></i>
+        <b>HOME</b>
     </a>
 </div>
 

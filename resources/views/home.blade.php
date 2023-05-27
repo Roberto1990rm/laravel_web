@@ -17,16 +17,26 @@
         color: #FFFFFF;
     }
 
-    .background-image {
+    .background-animation {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
         z-index: -1;
+        animation: backgroundAnimation 10s ease infinite;
+    }
+
+    @keyframes backgroundAnimation {
+        0% {
+            background-color: #423636;
+        }
+        50% {
+            background-color: #f6cd5c;
+        }
+        100% {
+            background-color: #30280798;
+        }
     }
 
     .rounded-image {
@@ -35,6 +45,7 @@
         width: 100%;
         max-width: 300px; /* Ajusta el tamaño máximo de la imagen redonda */
         margin-bottom: 30px;
+        animation: heartbeat 1.5s ease-in-out infinite; /* Agrega la animación heartbeat al gif */
     }
 
     .enter-icon {
@@ -54,9 +65,22 @@
     }
 
     .custom-heading {
-        font-size: 36px;
+        font-size: 20px;
         font-weight: bold;
         margin-bottom: 20px;
+        animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
     }
 
     .fixed-icon {
@@ -94,21 +118,42 @@
         font-weight: bold;
         color: #000000; /* Cambia el color del texto a negro */
     }
+
+    /* Ajuste para tablet */
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        .rounded-image {
+            max-width: 450px; /* Aumenta el tamaño máximo de la imagen redonda para tablet */
+        }
+    }
+
+    /* Ajuste para modo móvil */
+    @media screen and (max-width: 767px) {
+        .rounded-image {
+            max-width: 225px; /* Reduce el tamaño máximo de la imagen redonda para móvil */
+        }
+    }
+
+    /* Ajuste para pantallas grandes */
+    @media screen and (min-width: 1024px) {
+        .rounded-image {
+            max-width: 600px; /* Aumenta el tamaño máximo de la imagen redonda */
+        }
+    }
+
+
+    @media screen and (min-width: 2500px) {
+        .rounded-image {
+            max-width: 740px; /* Aumenta el tamaño máximo de la imagen redonda */
+        }
+    }
 </style>
 
 <div class="home-container">
-    <div class="background-image" style="background-image: url('{{ asset('img/madera3.jpeg') }}');"></div>
+    <div class="background-animation"></div>
 
-    <h1 class="custom-heading pb-4">Bienvenido al portal de cervecerías</h1>
-    <ul>
-        @isset($breweries)
-        @foreach ($breweries as $brewery)
-        <li>{{ $brewery->nombre }} ({{ $brewery->poblacion }})</li>
-        @endforeach
-        @endisset
-    </ul>
+    <h1 class="custom-heading mt-5 mb-5" onclick="window.location.href='{{ route('beers.index') }}';">Late al ritmo de tus cervezas favoritas</h1>
 
-    <a href={{ route('breweries.index') }}>
+    <a href="{{ route('beers.index') }}">
         <img src="{{ asset('img/bar12.gif') }}" class="rounded-image" style="opacity: 0.8; filter: alpha(opacity=50);">
     </a>
 
@@ -122,9 +167,7 @@
         {{ __('Aquí encontrarás lo mejor de todas las variedades de cervezas') }}
     </div>
 
-    <div class="enter-button mt-5">
-        <a href="{{ route('breweries.index') }}" class="enter-button">Ingresar</a>
-    </div>
+    
 </div>
 
 @endsection

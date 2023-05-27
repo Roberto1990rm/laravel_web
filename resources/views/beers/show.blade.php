@@ -71,12 +71,26 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         opacity: 0.7;
     }
+
+    /* Ajuste para modo móvil */
+    @media screen and (max-width: 767px) {
+        .custom-card1 .place {
+            flex-wrap: wrap; /* Hace que los logos se envuelvan en varias líneas */
+            max-height: 50px; /* Limita la altura de la sección de los logos */
+            overflow: hidden;
+        }
+
+        .custom-card1 .place img {
+            margin-bottom: 5px; /* Añade un espacio entre los logos envueltos en varias líneas */
+        }
+    }
 </style>
 
-<h1 class="custom-heading">Aquí vienen las cerveza</h1>
+
 
 <div class="row d-flex justify-content-center mb-4 p-0">
     <div class="col-sm-8">
+        <h1 class="custom-heading">Detalle de cerveza</h1>
         <div class="custom-card1 card mb-4 mt-4">
             <div class="card-body text-center" style="padding: 0;">
                 @if ($beer->imagen)
@@ -110,6 +124,8 @@
                     <p class="card-text">{{ $beer->descripcion }}</p>
                 </div>
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
+@auth
+    
 
                 <div class="d-flex justify-content-center mb-1">
                     <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-2">
@@ -122,16 +138,14 @@
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>
+                    @endauth
+                    <a href="{{ route('beers.index') }}" class="btn btn-primary rounded-circle me-3" style="background-color: #2196F3; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="d-flex justify-content-center mb-5">
-    <a href="{{ route('beers.index') }}" class="btn btn-primary mb-4">
-        Volver
-    </a>
 </div>
 
 @endsection
