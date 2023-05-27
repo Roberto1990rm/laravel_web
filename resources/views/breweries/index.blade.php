@@ -10,12 +10,15 @@
         border-radius: 10px;
         height: 100%;
         border: none; /* Elimina el borde de la card */
+        background: linear-gradient(to bottom right, #FFE900, #FFED86, #FFF); /* Degradado diagonal hasta el blanco */
     }
 
     .custom-card .card-img-top {
         border-radius: 0;
         margin: 0;
         padding: 0;
+        height: 200px; /* Altura fija de la imagen */
+        object-fit: cover; /* Ajusta la imagen al contenedor */
     }
 
     .custom-card .card-title {
@@ -30,8 +33,8 @@
         border: none;
         height: 100px;
         overflow: auto;
-        padding: 5px;
-        margin: 10px 0;
+        padding: 0px;
+        margin: 0px 0;
     }
 
     .custom-card .description-box p {
@@ -43,47 +46,99 @@
     .custom-card .btn-primary {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        border: 2px solid #ff7b00;
-        background: linear-gradient(to bottom, #15fc04fd, #59b336, #28b361);
+        border: 2px solid #0056b3;
+        background: linear-gradient(to bottom, #0099ff, #0056b3);
         color: #FFF;
         padding: 5px 10px;
         font-size: 85%;
         opacity: 0.8;
     }
+
+    /* Estilos para tarjetas en modo móvil */
+    @media (max-width: 575.98px) {
+        .custom-card {
+            height: auto;
+        }
+
+        .custom-card .card-img-top {
+            height: 250px;
+        }
+    }
+
+    /* Estilos para el contenedor principal */
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Estilos para el bloque del mapa */
+    .map-container {
+        margin-bottom: 30px;
+    }
+
+    /* Estilos para el bloque del encabezado */
+    .custom-heading {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    /* Estilos para el bloque de las tarjetas */
+    .card-container {
+        margin-bottom: 30px;
+    }
+
+    /* Estilos para el bloque de la barra de navegación */
+    .navbar-container {
+        margin-bottom: 30px;
+    }
 </style>
 
-<h1 class="custom-heading">Listado de cervecerías</h1>
-
-<div class="map-container" style="background: linear-gradient(135deg, #D2F7C7, #FDECEC); border-radius: 10px; box-shadow: 0 4px 6px rgba(57, 152, 79, 0.5); padding-bottom: 50px; margin: 30px;">
-    <div id="map" style="width: 100%; height: 300px; border-radius: 10px; margin-bottom: -50px;"></div>
+<div class="navbar-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Navbar content -->
+    </nav>
 </div>
 
-<div class="row m-3">
-    @foreach ($breweries as $brewery)
-    <div class="col-12 col-md-4 mb-3">
-        <div class="custom-card card mb-4 mt-4">
-            <div class="card-body text-center">
-                @if ($brewery->imagen)
-                    <img src="{{ url('storage/' . $brewery->imagen) }}" class="card-img-top rounded-0" alt="{{ $brewery->nombre }}">
-                @else
-                    <img src="{{ asset('img/birras.jpeg') }}" class="card-img-top rounded-0" alt="{{ $brewery->nombre }}">
-                @endif
+<div class="main-container">
+    <div class="map-container">
+        <div id="map" style="width: 100%; height: 300px; border-radius: 10px;"></div>
+    </div>
 
-                <h4 class="card-title"><b>{{ $brewery->nombre }}</b></h4>
-                <div class="description-box">
-                    <p class="card-text">{{ $brewery->descripcion }}</p>
+    <h1 class="custom-heading">Listado de cervecerías</h1>
+
+    <div class="card-container row">
+        <div class="col-12">
+            <div class="row">
+                @foreach ($breweries as $brewery)
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="custom-card card">
+                        <div class="card-body text-center">
+                            @if ($brewery->imagen)
+                                <img src="{{ url('storage/' . $brewery->imagen) }}" class="card-img-top rounded-0" alt="{{ $brewery->nombre }}">
+                            @else
+                                <img src="{{ asset('img/birra.jpeg') }}" class="card-img-top rounded-0" alt="{{ $brewery->nombre }}">
+                            @endif
+
+                            <h4 class="card-title"><b>{{ $brewery->nombre }}</b></h4>
+                            <div class="description-box">
+                                <p class="card-text">{{ $brewery->descripcion }}</p>
+                            </div>
+                            <p class="card-text"><i><h6><b>{{ $brewery->poblacion }}</b></h6></i></p>
+                            <div class="d-flex flex-column align-items-center">
+                                <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary mb-2">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="card-text"><i><h6><b>{{ $brewery->poblacion }}</b></h6></i></p>
-                <div class="d-flex flex-column align-items-center">
-                    <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary-custom  mb-2">Ver más</a>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
-    @endforeach
+
 </div>
 
-<div class="text-center mb-5 p-5">
+<div class="navbar-container text-center mb-5 p-5">
     @auth
     <div class="d-flex flex-column align-items-center">
         <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm mb-3">Añadir Cervecerías</a>

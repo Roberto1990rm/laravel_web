@@ -46,14 +46,14 @@
             </div>
             <div class="mb-3">
                 <label for="longitude" class="form-label">Longitud</label>
-                <input type="text" class="form-control" id="longitude" name="longitude" value="{{ old('longitude') }}" required/>
+                <input type="decimal" class="form-control" id="longitude" name="longitude" value="{{ old('longitude') }}" required/>
                 <div class="invalid-feedback">
                     La longitud es obligatoria.
                 </div>
             </div>
             <div class="mb-3">
                 <label for="latitude" class="form-label">Latitud</label>
-                <input type="text" class="form-control" id="latitude" name="latitude" value="{{ old('latitude') }}" required/>
+                <input type="decimal" class="form-control" id="latitude" name="latitude" value="{{ old('latitude') }}" required/>
                 <div class="invalid-feedback">
                     La latitud es obligatoria.
                 </div>

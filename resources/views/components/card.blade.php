@@ -1,7 +1,7 @@
 @isset($claseCard)
     <div class="{{ $claseCard }}">
 @else
-    <div class="col-sm-9">  
+    <div class="col-sm-12">  
 @endisset
 
 <div class="row d-flex justify-content-center w-100 m-0">

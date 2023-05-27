@@ -3,8 +3,8 @@
 @section('title', 'Contacta con nosotros')
 
 @section('content')
-<div class="d-flex justify-content-center mt-5">
-    <div class="col-sm-6">
+<div class="d-flex justify-content-center mt-5 pt-4  mb-3">
+    <div class="col-sm-6 mb-5 pb-5 pt-5">
         <h2 class="mt-3">Contacta con nosotros</h2>
 
         <form method="POST" action="{{ route('contact.store') }}" class="needs-validation" novalidate>
@@ -45,7 +45,7 @@
         </form>
     </div>
 </div>
-<div class="text-center mt-2 mb-5">
+<div class="text-center mt-5 mb-5">
     <a class="nav-link" href="{{ route('home') }}" style="color: #138906; margin-right: 5px; text-decoration: none;">
         <i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
         Inicio

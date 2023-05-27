@@ -8,23 +8,33 @@
     .home-container {
         position: relative;
         overflow: hidden;
+        height: 100vh; /* Ajusta la altura del contenedor a la altura de la ventana */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #FFFFFF;
     }
 
-    .background-video {
-        position: fixed;
+    .background-image {
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
         z-index: -1;
-        margin-bottom: 30px;
     }
 
     .rounded-image {
         border-radius: 50%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         width: 100%;
+        max-width: 300px; /* Ajusta el tamaño máximo de la imagen redonda */
+        margin-bottom: 30px;
     }
 
     .enter-icon {
@@ -44,7 +54,9 @@
     }
 
     .custom-heading {
-        text-decoration: none;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
     }
 
     .fixed-icon {
@@ -60,17 +72,34 @@
     .fixed-icon:hover {
         color: #FF0000;
     }
+
+    .enter-button {
+        background-color: #FF0000;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .enter-button:hover {
+        background-color: #CC0000;
+    }
+
+    .card-header {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #000000; /* Cambia el color del texto a negro */
+    }
 </style>
 
 <div class="home-container">
-    <a href="{{ route('breweries.index') }}">
-        <video autoplay muted loop class="background-video full-width">
-            <source src="{{ asset('videos/cerveVaso.mp4') }}" type="video/mp4">
-            Tu navegador no soporta video HTML5.
-        </video>
-    </a>
+    <div class="background-image" style="background-image: url('{{ asset('img/madera3.jpeg') }}');"></div>
 
-    <h1 class="custom-heading"><b>Bienvenido al portal de cervecerías</b></h1>
+    <h1 class="custom-heading pb-4">Bienvenido al portal de cervecerías</h1>
     <ul>
         @isset($breweries)
         @foreach ($breweries as $brewery)
@@ -79,35 +108,23 @@
         @endisset
     </ul>
 
-    <div class="d-flex justify-content-center align-items-center position-relative">
     <a href={{ route('breweries.index') }}>
-        <img src="{{ asset('img/bar12.gif') }}" class="container-fluid rounded-image" style="opacity: 0.8; filter: alpha(opacity=50);">
+        <img src="{{ asset('img/bar12.gif') }}" class="rounded-image" style="opacity: 0.8; filter: alpha(opacity=50);">
     </a>
-</div>
 
-<div class="card-header">{{ __('Bienvenidos') }}</div>
+    <div class="card-body">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
 
-<div class="card-body">
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
-
-    {{ __('Aquí encontraras lo mejor de todas la variedades de cebadas') }}
-</div>
-</div>
-
-
-    <div class="enter-button mt-5 d-flex justify-content-center align-items-center" style="margin-bottom: 30px;">
-        <a href="{{ route('breweries.index') }}" style="color: #FFFFFF; margin-right: 10px;">
-            <i class="enter-icon fas fa-sign-in-alt"></i>
-        </a>
+        {{ __('Aquí encontrarás lo mejor de todas las variedades de cervezas') }}
     </div>
 
-   
+    <div class="enter-button mt-5">
+        <a href="{{ route('breweries.index') }}" class="enter-button">Ingresar</a>
+    </div>
 </div>
-
-
 
 @endsection

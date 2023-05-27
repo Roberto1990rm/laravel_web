@@ -23,107 +23,121 @@
             background-position: center center;
             background-attachment: fixed;
             background-color: #f1f1f1;
-            
         }
+
         .navbar {
-            background-image: url("{{ asset('img/burbujas.jpg') }}");
-            background-repeat: repeat-x;
-            border: 3px solid #cdd0cb;
-            box-shadow: 0 4px 6px rgba(33, 34, 1, 0.878);
-            opacity: 0.9;
+            background: linear-gradient(to left, #ffeb3b, #ffffff);
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .card {
-            background-image: url("{{ asset('img/burbujas.jpg') }}");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            background-color: #f1f1f1;
+
+        .navbar-brand img {
+            height: 3em;
+            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: bold;
+            color: #050505;
+            font-size: 1em;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus {
+            color: #000;
+        }
+
+        .footer {
+            background-color: #212121;
+            color: #fff;
+            padding: 1.5rem 0;
+            font-size: 0.85em;
+        }
+
+        .footer .container {
+            text-align: center;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dashed #fff;
+        }
+
+        .footer a:hover,
+        .footer a:focus {
+            border-bottom-style: solid;
         }
     </style>
 </head>
 <body>
 <div class="container">
-  <nav class="navbar navbar-expand-md navbar-light" >
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset ('/img/logo.webp') }}" alt="{{ ('APP_NAME') }}" style="height: 3em; filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href={{ route('breweries.index') }} style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(251, 251, 251, 0.992); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
-                        <span style="border-bottom: 2px solid #050505;">Cervecerías</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{{ route('beers.index') }}" style="font-weight: bold; color: #050505; text-shadow: 1px 1px 2px rgba(253, 248, 248, 0.825); font-size: 1em; filter: drop-shadow(2px 2px 2px rgba(248, 201, 10, 0.5));">
-                    <span style="border-bottom: 2px solid #050505;">Cervezas</span>
-                </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact.create') }}" style="font-weight: bold; color: #fb685e; text-shadow: 1px 1px 2px rgb(252, 250, 250); font-size: 0.85em;">
-                        <span style="border-bottom: 2px solid #fb685e;">Contacto</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about') }}" style="font-weight: bold; color:  #fb685e; text-shadow: 1px 1px 2px rgb(251, 248, 248); font-size: 0.85em;">
-                        <span style="border-bottom: 2px solid #fb685e;">Quiénes somos</span>
-                    </a>
-                </li>
-                <li class="nav-item ms-5" style="margin-left:px;">
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Salir') }}
+    <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="{{ asset('/img/logo.webp') }}" alt="{{ config('app.name') }}">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('breweries.index') }}">Cervecerías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('beers.index') }}">Cervezas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('contact.create') }}">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('about') }}">Quiénes somos</a>
+                    </li>
+                    <li class="nav-item ms-5">
+                        <ul class="navbar-nav ms-auto">
+                            @guest
+                                @if (Route::has('login'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">Entrar</a>
+                                    </li>
+                                @endif
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                                    </li>
+                                @endif
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
                                     </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-                
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Salir
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endguest
+                        </ul>
+                    </li>
+                </ul>
             </div>
-                </li>
-            </ul>
         </div>
-    </div>
-</nav>
+    </nav>
+    
     <article>
         @yield('content')
     </article>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<footer class="bg-secondary text-white py-2 fixed-bottom">
+<footer class="footer">
     <div class="container">
-        Pié de página
+        Pié de página &copy; {{ date('Y') }}. Todos los derechos reservados. Diseñado por <a href="#" target="_blank">Roberto Ramírez</a>.
     </div>
 </footer>
 </body>

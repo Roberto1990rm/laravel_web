@@ -4,13 +4,10 @@
 
 @section('content')
 
-    <br>
-
-    <h1 class="custom-heading">Detalle de cervecería</h1>
-
-    <div class="row d-flex justify-content-center w-100 m-0">
-        <div class="col-sm-6">
-            <div class="card mb-4" style="width: 100%; border-radius: 10px; background-color: #F5EFD6;">
+    <div class="row d-flex justify-content-center w-100">
+        <h1 class="custom-heading">Detalle de cervecería</h1>
+        <div class="col-sm-10 mt-3">
+            <div class="card mb-4" style="width: 100%; border-radius: 10px; background: linear-gradient(135deg, #F5EFD6, #fff200);">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="">
                     <ol class="carousel-indicators">
                         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
@@ -93,12 +90,13 @@
                                 <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(176, 88, 88, 0.2);opacity: 0.70;">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                @endauth
                                 <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
                                     <i class="fas fa-arrow-left"></i>
                                 </a>
                             </div>
                         @endif
-                    @endauth
+                    
                     
                 </div>
             </div>
