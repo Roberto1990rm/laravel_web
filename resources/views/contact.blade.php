@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="message" class="form-label">Dinos cómo podemos ayudarte.</label>
+                <label for="message" class="form-label">Cómo podemos ayudarte.</label>
                 <textarea class="form-control" id="message" name="message" required></textarea>
                 <div class="invalid-feedback">
                     El mensaje es obligatorio.

@@ -22,7 +22,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('img/default-beer.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                            <img src="{{ asset('img/cerveceriasin.jpeg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p class="text-muted">Imagen 1</p>
                             </div>
@@ -66,12 +66,11 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Siguiente</span>
                     </a>
-                    
                 </div>
                 <div class="card-body text-center">
                     <h5 class="card-title" style="color: #FF0000; font-family: 'Impact', sans-serif;">{{ $brewery->nombre }}</h5>
-                    <div class="description-box" style="background-color: #F8F8E0; border: 1px solid #CCC; border-radius: 5px; height: 100px; overflow-y: auto; padding: 5px; margin: 10px 0;">
-                        <p class="card-text" style="text-align: justify;">{{ $brewery->descripcion }}</p>
+                    <div class="description-box" style="background-color: transparent; border: none; height: 100px; overflow-y: auto; padding: 0; margin: 10px 0;">
+                        <p class="card-text" style="text-align: justify; margin: 0;">{{ $brewery->descripcion }}</p>
                     </div>
                     <p class="card-text">
                         <span class="font-weight-bold"><strong>Calle:</strong></span>
@@ -83,40 +82,30 @@
                     </p>
                     @auth
                         @if($brewery->author == Auth::user()->id)
-                        
+                            <div class="d-flex justify-content-center mt-4">
+                                <form method="POST" action="{{ route('breweries.destroy', $brewery) }}" >
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger rounded-circle me-3" onclick="return confirm('¿Estás seguro de eliminar esta cervecería?')" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                                <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(176, 88, 88, 0.2);opacity: 0.70;">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+                        @endif
+                    @endauth
                     
-                        <div class="d-flex justify-content-center mt-4">
-                            <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);opacity: 0.70;">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                            <form method="POST" action="{{ route('breweries.destroy', $brewery) }}" >
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger rounded-circle me-3" onclick="return confirm('¿Estás seguro de eliminar esta cervecería?')" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-
-                            @endif
-                        @endauth
-
-
-                            <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #7f9ebf; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
-                                <i class="fas fa-arrow-left"></i>
-                            </a>
-                        </div>
-                        
-                       
-                        
-
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="map-container" style="padding-bottom: 10px;">
+    <div class="map-container" style="padding: 20px;">
         <div id="map" style="height: 300px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);"></div>
     </div>
     <div class="d-flex flex-column align-items-center mb-5" style="padding-bottom: 30px;">
@@ -125,15 +114,22 @@
             Inicio
         </a>
     </div>
-    
-    
 
     <style>
         .carousel-image {
             object-fit: cover;
             height: 300px;
             border-radius: 10px;
-            padding: 5px;
+            padding: 0;
+            margin: 0;
+        }
+        .description-box {
+            background-color: transparent;
+            border: none;
+            height: 100px;
+            overflow-y: auto;
+            padding: 0;
+            margin: 10px 0;
         }
     </style>
 

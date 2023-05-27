@@ -30,6 +30,7 @@ body {
     background-color: rgba(248, 247, 227, 0.3);
     box-shadow: 0 4px 6px rgba(33, 34, 1, 0.878);
     padding: 10px;
+    margin: 30px;
     color: #080800; /* Ajusta el color del texto según sea necesario */
     text-shadow: 2px 2px 4px rgba(247, 242, 242, 0.5);
     margin-bottom: 20px;
@@ -76,4 +77,12 @@ body {
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: #000000;
+}
+
+.btn-primary-custom {
+    background-color: #007bff;
+    border-color: #007bff;
+    text-shadow: #fefefe;
+    opacity: 0.9;
+    color: #FDECEC;  
 }
