@@ -8,4 +8,10 @@ class Brewery extends Model
 {
     protected $table = 'breweries';
     // Resto de configuraciones y relaciones del modelo
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

@@ -7,7 +7,7 @@
 <style>
     .custom-card {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
+        border-radius: 0px;
         height: 100%;
         border: none; /* Elimina el borde de la card */
         background: linear-gradient(to bottom right, #FFE900, #FFED86, #FFF); /* Degradado diagonal hasta el blanco */
@@ -114,11 +114,11 @@
                 <div class="col-md-6 col-lg-4 mb-3">
                     <div class="custom-card card">
                         <div class="card-body text-center">
-                            @if ($brewery->imagen)
-                                <img src="{{ url('storage/' . $brewery->imagen) }}" class="card-img-top rounded-0" alt="{{ $brewery->nombre }}">
-                            @else
-                                <img src="{{ asset('img/birra.jpeg') }}" class="card-img-top rounded-0" alt="{{ $brewery->nombre }}">
-                            @endif
+                            @if ($brewery->imagen && Storage::disk('public')->exists($brewery->imagen))
+                                    <img src="{{ url('storage/' . $brewery->imagen) }}" class="card-img-top rounded-0" alt="{{ $brewery->nombre }}">
+                                @else
+                                    <img src="{{ asset('img/default.jpg') }}" class="card-img-top rounded-0" alt="{{ $brewery->nombre }}">
+                                @endif
 
                             <h4 class="card-title"><b>{{ $brewery->nombre }}</b></h4>
                             <div class="description-box">

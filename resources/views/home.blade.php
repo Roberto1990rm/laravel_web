@@ -153,7 +153,7 @@
 
     <h1 class="custom-heading mt-5 mb-5" onclick="window.location.href='{{ route('beers.index') }}';">Late al ritmo de tus cervezas favoritas</h1>
 
-    <a href="{{ route('beers.index') }}">
+    <a href="{{ route('breweries.index') }}">
         <img src="{{ asset('img/bar12.gif') }}" class="rounded-image" style="opacity: 0.8; filter: alpha(opacity=50);">
     </a>
 

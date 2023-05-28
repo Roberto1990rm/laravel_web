@@ -57,17 +57,24 @@
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Anterior</span>
+                            <span class="visually-hidden">Previous</span>
                         </a>
                         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Siguiente</span>
+                            <span class="visually-hidden">Next</span>
                         </a>
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title" style="color: #FF0000; font-family: 'Impact', sans-serif;">{{ $brewery->nombre }}</h5>
                         <div class="description-box" style="background-color: transparent; border: none; height: 100px; overflow-y: auto; padding: 0; margin: 10px 0;">
                             <p class="card-text" style="text-align: justify; margin: 0;">{{ $brewery->descripcion }}</p>
+                            @auth
+                                @if ($brewery->user)
+                                    <p class="card-text" style="text-align: justify; margin: 0;"><b>Cervecería creada</b> por: {{ $brewery->user->name }}</p>
+                                @else
+                                    <p class="card-text" style="text-align: justify; margin: 0;">Usuario no encontrado</p>
+                                @endif
+                            @endauth
                         </div>
                         <p class="card-text">
                             <span class="font-weight-bold"><strong>Calle:</strong></span>

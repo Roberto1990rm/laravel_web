@@ -105,7 +105,7 @@
     @guest
         Solo los usuarios registrados pueden añadir cerveza
     @endguest
-    <a class="nav-link" href="{{ route('beers.index') }}" style="color: #138906; margin-right: 5px; text-decoration: none;"><i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>Inicio</a>
+    <a class="nav-link" href="{{ route('beers.index') }}" style="color: #138906; margin-right: 5px; text-decoration: none;"><i class="fas fa-home" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i><b>Inicio</b></a>
 </div>
 
 @endsection

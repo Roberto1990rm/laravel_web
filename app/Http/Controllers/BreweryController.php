@@ -65,7 +65,7 @@ class BreweryController extends Controller
             $brewery->imagen = 'bar.jpg';
         }
 
-        $brewery->author = Auth::id();
+        $brewery->user_id = Auth::id();
 
         // Guardar la cervecería
         $brewery->save();
@@ -155,6 +155,8 @@ class BreweryController extends Controller
     $breweries = Brewery::all();
     return response()->json($breweries);
 }*/
+
+
 
 
 
