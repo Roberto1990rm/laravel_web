@@ -9,7 +9,7 @@
         <h2 class="pt-3 pb-3">Nueva cervecería</h2>
 
         @isset($errors)
-        @foreach ($errors->all () as $error)
+        @foreach ($errors->all() as $error)
             <p class="text-danger">{{ $error }}</p>
         @endforeach
         @endisset
@@ -59,8 +59,17 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="imagen" class="form-label">Imagen</label>
+                <label for="imagen" class="form-label">Imagen de portada</label>
                 <input type="file" class="form-control" id="imagen" name="imagen">
+            </div>
+
+            <div class="mb-3">
+                <label for="images" class="form-label">Otras imágenes</label>
+                <div class="d-flex" id='contImages'>
+                    <div class="d-flex">
+                        <input type="file" class="form-control" id="images_0" name="images[]" multiple/><a href="javascript:otraImagen()" class= "btn btn-success ms-2">+</a>
+                    </div>
+                </div>
             </div>
 
             <div class="row mb-3">
@@ -99,6 +108,13 @@
             }, false);
         });
     })();
+
+    function otraImagen() {
+        let contenedor = document.getElementById('contImages');
+        if (contenedor) {
+            contenedor.insertAdjacentHTML('beforeend', '<div class="d-flex"><input type="file" class="form-control" id="images_0" name="images[]" multiple/><a href="javascript:otraImagen()" class= "btn btn-success ms-2">+</a></div>');
+        }
+    }
 </script>
 
 @endsection
