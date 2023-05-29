@@ -21,6 +21,7 @@ Route::get('/', function() {
 
 
 Route::get('/cervecerias', [BreweryController::class, 'index'])->name('breweries.index');
+Route::get('/cervecerías/mispropuestas', [BreweryController::class, 'proposals'])->name('breweries.proposals');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -33,6 +34,8 @@ Route::delete('/breweries/{id}', [BreweryController::class, 'destroy'])->name('b
 });
 
 Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('breweries.show');
+
+
 Route::resource('/beers', BeerController::class)->parameters(["beers"]);
 
 Route::get('/beers/create', [BeerController::class, 'create'])->name('beers.create');

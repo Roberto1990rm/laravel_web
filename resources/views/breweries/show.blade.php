@@ -19,7 +19,7 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('img/cerveceriasin.jpeg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                                <img src="{{ asset('img/default.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                                 <div class="carousel-caption d-none d-md-block">
                                     <p class="text-muted">Imagen 1</p>
                                 </div>
@@ -31,13 +31,13 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('img/restaurant.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                                <img src="{{ asset('img/default.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                                 <div class="carousel-caption d-none d-md-block">
                                     <p class="text-muted">Imagen 3</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('img/wines.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                                <img src="{{ asset('img/default.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
                                 <div class="carousel-caption d-none d-md-block">
                                     <p class="text-muted">Imagen 4</p>
                                 </div>
@@ -67,14 +67,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title" style="color: #FF0000; font-family: 'Impact', sans-serif;">{{ $brewery->nombre }}</h5>
                         <div class="description-box" style="background-color: transparent; border: none; height: 100px; overflow-y: auto; padding: 0; margin: 10px 0;">
-                            <p class="card-text" style="text-align: justify; margin: 0;">{{ $brewery->descripcion }}</p>
-                            @auth
-                                @if ($brewery->user)
-                                    <p class="card-text" style="text-align: justify; margin: 0;"><b>Cervecería creada</b> por: {{ $brewery->user->name }}</p>
-                                @else
-                                    <p class="card-text" style="text-align: justify; margin: 0;">Usuario no encontrado</p>
-                                @endif
-                            @endauth
+                            <p class="card-text" style="text-align: justify; margin: 0; word-spacing: -0.15em;">{{ $brewery->descripcion }}</p>
                         </div>
                         <p class="card-text">
                             <span class="font-weight-bold"><strong>Calle:</strong></span>
@@ -85,31 +78,37 @@
                             <span style="text-decoration: underline; display: inline-block; margin-left: 5px; font-family: 'Comic Sans MS', cursive;">{{ $brewery->ciudad }}</span>
                         </p>
                     </div>
-                    <div class="card-footer">
-                        @auth
-                            @if($brewery->author == Auth::user()->id)
-                                <div class="d-flex justify-content-between mt-4">
-                                    <div>
-                                        <form method="POST" action="{{ route('breweries.destroy', $brewery) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger rounded-circle mb-2" onclick="return confirm('¿Estás seguro de eliminar esta cervecería?')" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-                                        <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                    </div>
-                                    @endif
-                                    @endauth
-                                    <div>
-                                        <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle" style="background-color: #2196F3; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
-                                            <i class="fas fa-arrow-left"></i>
-                                        </a>
-                                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <div>
+                            <a href="{{ route('breweries.index') }}" class="btn btn-primary rounded-circle mt-2" style="background-color: #2196F3; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                            @if ($brewery->user)
+                                <div class="mt-3">
+                                    <p class="card-text" style="text-align: justify; margin: 0;"><b>Cervecería creada</b> por: {{ $brewery->user->name }}</p>
                                 </div>
-                           
+                            @else
+                                <div class="mt-3">
+                                    <p class="card-text" style="text-align: justify; margin: 0;">Registro creado por administrador</p>
+                                </div>
+                            @endif
+                        </div>
+                        <div>
+                            @auth
+                                @if(Auth::user()->id == $brewery->user_id)
+                                    <form method="POST" action="{{ route('breweries.destroy', $brewery) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger rounded-circle mb-2" onclick="return confirm('¿Estás seguro de eliminar esta cervecería?')" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                    <a href="{{ route('breweries.edit', ['id' => $brewery->id]) }}" class="btn btn-primary rounded-circle me-3" style="background-color: #e13816; color: #FFFFFF; box-shadow: 0 0 10px rgba(201, 27, 27, 0.2); opacity: 0.70;">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                @endif
+                            @endauth
+                        </div>
                     </div>
                 </div>
             </div>

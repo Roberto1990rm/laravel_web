@@ -1,5 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
+
 }
 
 h1 {
@@ -21,6 +22,12 @@ h1 {
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.carousel-image {
+    object-fit: cover;
+    height: 300px; /* Ajusta el tamaño deseado */
+  }
+  
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {

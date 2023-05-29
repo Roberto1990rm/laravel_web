@@ -125,9 +125,15 @@
                                 <p class="card-text">{{ $brewery->descripcion }}</p>
                             </div>
                             <p class="card-text"><i><h6><b>{{ $brewery->poblacion }}</b></h6></i></p>
+                            
                             <div class="d-flex flex-column align-items-center">
-                                <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary mb-2">Ver más</a>
+                                <a href="{{ route('breweries.show', $brewery) }}" class="btn btn-primary mb-4">Ver más</a>
                             </div>
+                            @if ($brewery->user)
+                                    <p class="card-text" style="text-align: justify; margin: 0;"><b>Cervecería creada</b> por: {{ $brewery->user->name }}</p>
+                                @else
+                                    <p class="card-text" style="text-align: justify; margin: 0;"><b>Creado por:</b> CerveLab</p>
+                                @endif
                         </div>
                     </div>
                 </div>
@@ -142,6 +148,11 @@
     @auth
     <div class="d-flex flex-column align-items-center">
         <a href="{{ route('breweries.create') }}" class="btn btn-primary btn-sm mb-3">Añadir Cervecerías</a>
+    @endauth
+
+    @auth
+    <div class="d-flex flex-column align-items-center">
+        <a href="{{ route('breweries.proposals') }}" class="btn btn-primary btn-sm mb-3">Ver mis cervecerías</a>
     @endauth
 
     @guest

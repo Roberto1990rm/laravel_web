@@ -56,7 +56,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('entrar') }}
                                 </button>
-                                
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -72,3 +71,12 @@
     </div>
 </div>
 @endsection
+
+@section('footer')
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+        <span class="text-muted">© 2023 Your Website. Todos los derechos reservados.</span>
+    </div>
+</footer>
+@endsection
+

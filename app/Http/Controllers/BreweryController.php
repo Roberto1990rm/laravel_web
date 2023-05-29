@@ -17,19 +17,22 @@ class BreweryController extends Controller
     public function index()
 {
     $breweries = Brewery::orderBy('nombre')->get();
-
-    // Asignar imagen por defecto si la imagen está vacía
     foreach ($breweries as $brewery) {
         if (empty($brewery->imagen)) {
-            $brewery->imagen = asset('storage/bar.jpg'); // Ruta de la imagen por defecto
+            $brewery->imagen = asset('storage/bar.jpg'); // Ruta 
         }
     }
-
     return view('breweries.index', compact('breweries'));
 }
     
 
-    
+public function proposals()
+{
+    $user = Auth::user();
+    $breweries = Brewery::where('user_id', $user->id)->get();
+    return view('breweries.index', ['breweries' => $breweries]);
+}
+
 
     public function show($id)
     {
