@@ -77,10 +77,6 @@
                                                 <img src="{{ url('storage/' . $image->img) }}" class="img-fluid rounded" style="width: 200px; height: 100px;" alt="{{ $brewery->nombre }}">
                                             </div>
                                             <div class="mt-2">
-                                                <label for="existing-image-{{ $image->id }}" class="form-label">Reemplazar imagen</label>
-                                                <input type="file" class="form-control" id="existing-image-{{ $image->id }}" name="existing-images[{{ $image->id }}]">
-                                            </div>
-                                            <div class="mt-2">
                                                 <input type="checkbox" name="delete-images[]" value="{{ $image->id }}" id="delete-image-{{ $image->id }}">
                                                 <label for="delete-image-{{ $image->id }}">Eliminar</label>
                                             </div>
@@ -89,6 +85,16 @@
                                 </div>
                             </div>
                         @endif
+
+                        <div class="mb-3">
+                            <label for="cervezas" class="form-label">Cervezas relacionadas</label>
+                            @foreach($beers as $beer)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="cervezas[]" value="{{ $beer->id }}" id="beer-{{ $beer->id }}" {{ in_array($beer->id, $breweryBeers) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="beer-{{ $beer->id }}">{{ $beer->nombre }}</label>
+                                </div>
+                            @endforeach
+                        </div>
 
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary mb-2">Guardar cambios</button>

@@ -42,6 +42,21 @@
                         <div class="description-box" style="background-color: transparent; border: none; height: 100px; overflow-y: auto; padding: 0; margin: 10px 0;">
                             <p class="card-text" style="text-align: justify; margin: 0; word-spacing: -0.15em;">{{ $brewery->descripcion }}</p>
                         </div>
+
+                        <div>
+                            <div class="mt-3">
+                                <h5 class="font-weight-bold"><b>Cervezas servidas:</b></h5>
+                                <ul style="list-style-type: none;">
+                                    @foreach ($brewery->beers as $beer)
+                                        <li>
+                                            <i class="fas fa-beer"></i>
+                                            <a href="{{ route('beers.show', ['id' => $beer->id]) }}">{{ $beer->nombre }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        
                         <p class="card-text">
                             <span class="font-weight-bold"><strong>Calle:</strong></span>
                             <span style="text-decoration: underline; display: inline-block; margin-left: 5px; font-family: 'Comic Sans MS', cursive;">{{ $brewery->calle }}</span>

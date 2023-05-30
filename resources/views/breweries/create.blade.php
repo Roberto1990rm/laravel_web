@@ -80,7 +80,7 @@
                 {{ $beer->nombre }}
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" name="beers[]" value="{{ $beer->id }}" role="switch" id="beer_{{ $beer->id }}">
-                    <label class="form-check-label" for="beer_{{ $beer->id }}"> {{ $beer->marca }}Default switch checkbox input</label>
+                    <label class="form-check-label" for="beer_{{ $beer->id }}"> {{ $beer->marca }}</label>
                   </div>
             </div>
         @endforeach

@@ -36,13 +36,15 @@ class BreweryController extends Controller
     }
 
 
-public function show($id)
+    public function show($id)
     {
-        $brewery = Brewery::with('images')->findOrFail($id);
-
-        return view('breweries.show', compact('brewery'));
-
+        $brewery = Brewery::findOrFail($id);
+        $beers = $brewery->beers()->get();
+        $badges = $beers->pluck('name')->toArray();
+    
+        return view('breweries.show', compact('brewery', 'badges'));
     }
+    
 
     public function create()
 {
@@ -102,18 +104,17 @@ public function store(BreweryRequest $request)
     return redirect()->route('breweries.index')->with('success', 'La cervecería se ha creado correctamente.');
 }
 
-    public function edit($id)
-    {
-        $brewery = Brewery::find($id);
+public function edit($id)
+{
+    $brewery = Brewery::findOrFail($id);
+    $beers = Beer::all(); // Obtener todas las cervezas disponibles
+    $breweryBeers = $brewery->beers()->pluck('beer_id')->toArray(); // Obtener los IDs de las cervezas relacionadas con la cervecería
 
-        if (!$brewery) {
-            return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
-        }
+    return view('breweries.edit', compact('brewery', 'beers', 'breweryBeers'));
+}
 
-        return view('breweries.edit', compact('brewery'));
-    }
 
-    public function update(Request $request, $id)
+public function update(Request $request, $id)
 {
     $brewery = Brewery::findOrFail($id);
     $brewery->nombre = $request->input('nombre');
@@ -122,6 +123,10 @@ public function store(BreweryRequest $request)
     $brewery->calle = $request->input('calle');
     $brewery->longitude = $request->input('longitude');
     $brewery->latitude = $request->input('latitude');
+
+    // Actualizar cervezas servidas
+    $beerIds = $request->input('cervezas');
+    $brewery->beers()->sync($beerIds);
 
     if ($request->hasFile('imagen')) {
         // Eliminar imagen anterior
@@ -154,20 +159,24 @@ public function store(BreweryRequest $request)
 }
 
 
-    public function destroy($id)
-    {
-        $brewery = Brewery::find($id);
+public function destroy($id)
+{
+    $brewery = Brewery::find($id);
 
-        if (!$brewery) {
-            return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
-        }
-
-        if ($brewery->imagen) {
-            Storage::delete('public/' . $brewery->imagen);
-        }
-
-        $brewery->delete();
-
-        return redirect()->route('breweries.index')->with('success', 'Cervecería eliminada correctamente.');
+    if (!$brewery) {
+        return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
     }
+
+    // Eliminar registros relacionados en la tabla beer_brewery
+    $brewery->beers()->detach();
+
+    if ($brewery->imagen) {
+        Storage::delete('public/' . $brewery->imagen);
+    }
+
+    $brewery->delete();
+
+    return redirect()->route('breweries.index')->with('success', 'Cervecería eliminada exitosamente.');
+}
+
 }

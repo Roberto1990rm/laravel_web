@@ -28,6 +28,10 @@ h1 {
     height: 300px; /* Ajusta el tamaño deseado */
   }
   
+ul {
+    list-style-type: none;
+}
+
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
