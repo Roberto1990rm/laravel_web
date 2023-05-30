@@ -10,50 +10,19 @@
                 <div class="card mb-4" style="border-radius: 10px; background: linear-gradient(135deg, #F5EFD6, #fff200); border: none;">
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"></li>
+                            @foreach ($brewery->images as $image)
+                                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+                            @endforeach
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ asset('img/default.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p class="text-muted">Imagen 1</p>
+                            @foreach($brewery->images as $key => $image)
+                                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                    <img src="{{ url('storage/' . $image->img) }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <p class="text-muted">Imagen {{ $key + 1 }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/wines.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p class="text-muted">Imagen 2</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/default.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p class="text-muted">Imagen 3</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/default.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p class="text-muted">Imagen 4</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/wines.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p class="text-muted">Imagen 5</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/wines.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $brewery->nombre }}">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p class="text-muted">Imagen 6</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

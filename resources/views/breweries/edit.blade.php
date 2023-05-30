@@ -50,15 +50,36 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="imagen" class="form-label">Imagen</label>
+                            <label for="imagen" class="form-label">Imagen de portada</label>
                             <input type="file" class="form-control" id="imagen" name="imagen">
                         </div>
 
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary me-3">Guardar cambios</button>
-                            <a href="{{ route('breweries.index') }}" class="btn btn-secondary">Volver al listado</a>
+                        <div class="mb-3">
+                            <label for="images" class="form-label">Imágenes adicionales</label>
+                            <input type="file" class="form-control" id="images" name="images[]" multiple>
+                        </div>
+
+                        @if ($brewery->images)
+                            <div class="mb-3">
+                                <label for="existing-images" class="form-label">Imágenes actuales</label>
+                                <div class="row">
+                                    @foreach($brewery->images as $image)
+                                        <div class="col-md-4">
+                                            <div class="image-box">
+                                                <img src="{{ url('storage/' . $image->img) }}" class="img-fluid rounded" style="width: 200px; height: 100px;" alt="{{ $brewery->nombre }}">
+                                            </div>
+                                            <input type="file" class="form-control mt-2" id="image-{{ $image->id }}" name="existing-images[{{ $image->id }}]">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

@@ -34,13 +34,14 @@ class BreweryController extends Controller
         return view('breweries.index', ['breweries' => $breweries]);
     }
 
-    public function show($id)
+
+public function show($id)
     {
-        $brewery = Brewery::find($id);
+        $brewery = Brewery::with('images')->findOrFail($id);
 
         return view('breweries.show', compact('brewery'));
-    }
 
+    }
 
     public function create()
 {
@@ -104,45 +105,45 @@ public function store(BreweryRequest $request)
         return view('breweries.edit', compact('brewery'));
     }
 
-    public function update(BreweryRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'poblacion' => 'required',
-            'calle' => 'required',
-            'longitude' => 'required',
-            'latitude' => 'required',
-            'imagen' => 'image',
-        ]);
-
-        $brewery = Brewery::find($id);
-
-        if (!$brewery) {
-            return redirect()->route('breweries.index')->with('message', 'Cervecería no encontrada.')->with('code', 1);
-        }
-
-        $brewery->nombre = $validatedData['nombre'];
-        $brewery->descripcion = $validatedData['descripcion'];
-        $brewery->poblacion = $validatedData['poblacion'];
-        $brewery->calle = $validatedData['calle'];
-        $brewery->longitude = $validatedData['longitude'];
-        $brewery->latitude = $validatedData['latitude'];
+        $brewery = Brewery::findOrFail($id);
+        $brewery->nombre = $request->input('nombre');
+        $brewery->descripcion = $request->input('descripcion');
+        $brewery->poblacion = $request->input('poblacion');
+        $brewery->calle = $request->input('calle');
+        $brewery->longitude = $request->input('longitude');
+        $brewery->latitude = $request->input('latitude');
 
         if ($request->hasFile('imagen')) {
-            $image = $request->file('imagen');
+            // Eliminar imagen anterior
+            Storage::delete($brewery->imagen);
 
-            if ($brewery->imagen) {
-                Storage::delete('public/' . $brewery->imagen);
+            // Guardar nueva imagen
+            $brewery->imagen = $request->file('imagen')->store('public');
+        }
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                // Guardar imágenes adicionales
+                $path = $image->store('brewery_images', 'public');
+                $brewery->images()->create(['img' => $path]);
             }
+        }
 
-            $path = $image->store('brewery_images', 'public');
-            $brewery->imagen = $path;
+        if ($request->hasFile('existing-images')) {
+            foreach ($request->file('existing-images') as $imageId => $image) {
+                // Actualizar imágenes existentes
+                $existingImage = $brewery->images()->findOrFail($imageId);
+                Storage::delete($existingImage->img);
+                $existingImage->img = $image->store('brewery_images', 'public');
+                $existingImage->save();
+            }
         }
 
         $brewery->save();
 
-        return redirect()->route('breweries.show', ['id' => $id])->with('success', 'Cervecería actualizada correctamente.');
+        return redirect()->route('breweries.show', ['id' => $brewery->id])->with('success', 'Cervecería actualizada exitosamente.');
     }
 
     public function destroy($id)

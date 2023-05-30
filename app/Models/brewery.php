@@ -6,12 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brewery extends Model
 {
-    protected $table = 'breweries';
-    // Resto de configuraciones y relaciones del modelo
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'calle',
+        'poblacion',
+        'ciudad',
+        // otros campos de la cervecería
+    ];
 
-    public function user()
+    public function images()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Image::class);
     }
 
+    // otras relaciones y métodos del modelo
 }

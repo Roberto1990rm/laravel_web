@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'brewery_id',
+        'img',
+        // otros campos de la imagen
+    ];
 
-   protected $fillable = ['img'];
+    public function brewery()
+    {
+        return $this->belongsTo(Brewery::class);
+    }
 
-
-   public function brewery()
-{
-    return $this->belongsTo(Brewery::class);
-}
+    // otros métodos del modelo
 }
