@@ -21,19 +21,15 @@ class Brewery extends Model
         return $this->hasMany(Image::class);
     }
 
-
-    public function beers()
-{
-    return $this->belongsToMany(Beer::class, 'beer_brewery');
-}
-
-
-
     public function user()
 {
     return $this->belongsTo(User::class);
 }
 
+public function beers()
+{
+    return $this->belongsToMany(Beer::class);
+}
 
     // otras relaciones y métodos del modelo
 }

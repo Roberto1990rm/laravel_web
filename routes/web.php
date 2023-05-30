@@ -42,7 +42,8 @@ Route::resource('/beers', BeerController::class)->parameters(["beers"]);
 Route::get('/beers/create', [BeerController::class, 'create'])->name('beers.create');
 Route::post('/beers/store', [BeerController::class, 'store'])->name('beers.store');
 Route::get('/beers/edit/{id}', [BeerController::class, 'edit'])->name('beers.edit');
-Route::post('/beers/update/{id}', [BeerController::class, 'update'])->name('beers.update');
+Route::put('/beers/update/{id}', [BeerController::class, 'update'])->name('beers.update');
+
 Route::delete('/beers/{id}', [BeerController::class, 'destroy'])->name('beers.destroy');
 
 

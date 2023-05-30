@@ -6,10 +6,10 @@
 
 <div class="d-flex justify-content-center">
     <div class="col-sm-6">
-        <h2 class="pt-3 pb-3">Nueva cervecería</h2>
+        <h2 class="pt-3 pb-3">Nueva cerveza</h2>
 
         @isset($errors)
-        @foreach ($errors->all () as $error)
+        @foreach ($errors->all() as $error)
             <p class="text-danger">{{ $error }}</p>
         @endforeach
         @endisset
@@ -50,6 +50,22 @@
                 <label for="imagen" class="form-label">Imagen</label>
                 <input type="file" class="form-control" id="imagen" name="imagen">
             </div>
+
+
+            <div class="mb-3 mt-3 row">
+                <label for="breweries" class="form-label" style="color: #FFFFFF">Dónde beberla</label>
+                @foreach ($breweries as $brewery )
+                <div class="col-md-6 p-2" style="color: #FFFFFF">
+                    {{ $brewery->nombre }}
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="breweries[]" value="{{ $brewery->id }}" role="switch" id="brewery_{{ $brewery->id }}">
+                        <label class="form-check-label" for="brewery_{{ $brewery->id }}"> </label>
+                      </div>
+                </div>
+                @endforeach
+
+            </div>
+
 
             <div class="row mb-3">
                 <div class="col-12 text-center">

@@ -2,113 +2,79 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BeerRequest;
 use App\Models\Beer;
+use App\Models\Brewery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Auth;
 
 class BeerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
-        $beers = beer::orderBy('marca')->get();
-
-        return view ('beers.index', compact ('beers'));
+        $beers = Beer::orderBy('marca')->get();
+        return view('beers.index', compact('beers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('beers.create');
+        if (Auth::check()) {
+            $breweries = Brewery::orderBy('nombre')->get();
+            return view('beers.create', compact('breweries'));
+        } else {
+            return redirect()->route('beers.index');
+        }
     }
 
-    public function store(Request $request)
+    public function store(BeerRequest $request)
     {
         $beer = new Beer();
-
-        // Asignar valores de los campos del formulario
-        $beer->nombre = $request->input('nombre');
-        $beer->descripcion = $request->input('descripcion');
         $beer->marca = $request->input('marca');
+        $beer->nombre = $request->input('nombre');
         $beer->vol = $request->input('vol');
+        $beer->descripcion = $request->input('descripcion');
+        $beer->user_id = Auth::id();
 
-        // Guardar la imagen
         if ($request->hasFile('imagen')) {
             $image = $request->file('imagen');
             $path = $image->store('beer_images', 'public');
             $beer->imagen = $path;
         } else {
-            // Si no se proporciona una nueva imagen, asignar la imagen por defecto
             $beer->imagen = 'bar.jpg';
         }
 
-        
-
-        // Guardar la cervecería
         $beer->save();
 
-        // Redireccionar o realizar otras acciones después de guardar la cervecería
-        // ...
+        $breweries = $request->input('breweries');
+        //dd($breweries);
+        $beer->breweries()->attach($breweries);
 
-        return redirect()->route('beers.index')->with('success', 'Cerveza creada correctamente.');
+        return redirect()->route('beers.index')->with('success', 'La cerveza se ha creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Beer $beer)
     {
-        //
         return view('beers.show', compact('beer'));
-    
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit($id)
     {
-        $beer = Beer::find($id);
-
-        if (!$beer) {
-            return redirect()->route('beers.index')->with('message', 'Cerveza no encontrada.')->with('code', 1);
-        }
-
-        return view('beers.edit', compact('beer'));
+        $beer = Beer::findOrFail($id);
+        $breweries = Brewery::all(); // Obtener todas las cervecerías
+    
+        return view('beers.edit', compact('beer', 'breweries'));
     }
-
+    
     public function update(Request $request, $id)
 {
-    $validatedData = $request->validate([
-        'nombre' => 'required',
-        'descripcion' => 'required',
-        'marca' => 'required',
-        'vol' => 'required',
-        'imagen' => 'image',
-    ]);
+    $beer = Beer::findOrFail($id);
+    $beer->nombre = $request->input('nombre');
+    $beer->descripcion = $request->input('descripcion');
 
-    $beer = Beer::find($id);
-
-    if (!$beer) {
-        return redirect()->route('beers.index')->with('message', 'Cerveza no encontrada.')->with('code', 1);
-    }
-
-    $beer->nombre = $validatedData['nombre'];
-    $beer->descripcion = $validatedData['descripcion'];
-    $beer->marca = $validatedData['marca'];
-    $beer->vol = $validatedData['vol'];
-
-    // Almacenar la nueva imagen solo si se proporciona una
     if ($request->hasFile('imagen')) {
         $image = $request->file('imagen');
 
-        // Eliminar la imagen anterior si existe
         if ($beer->imagen) {
             Storage::disk('public')->delete('beer_images/' . $beer->imagen);
         }
@@ -119,27 +85,29 @@ class BeerController extends Controller
 
     $beer->save();
 
-    return redirect()->route('beers.show', ['id' => $id])->with('success', 'Cerveza actualizada correctamente.');
+    // Actualizar las cervecerías asociadas
+    $selectedBreweries = $request->input('breweries', []);
+    $beer->breweries()->sync($selectedBreweries);
+
+    return redirect()->route('beers.show', ['id' => $beer->id])->with('success', 'Cerveza actualizada correctamente.');
 }
 
 
-public function destroy($id)
-{
-    $beer = Beer::find($id);
 
-    if (!$beer) {
-        return redirect()->route('beers.index')->with('message', 'Cerveza no encontrada.')->with('code', 1);
+    public function destroy($id)
+    {
+        $beer = Beer::find($id);
+
+        if (!$beer) {
+            return redirect()->route('beers.index')->with('message', 'Cerveza no encontrada.')->with('code', 1);
+        }
+
+        if ($beer->imagen) {
+            Storage::disk('public')->delete('beer_images/' . $beer->imagen);
+        }
+
+        $beer->delete();
+
+        return redirect()->route('beers.index')->with('success', 'Cerveza eliminada correctamente.');
     }
-
-    // Eliminar la imagen si existe
-    if ($beer->imagen) {
-        Storage::disk('public')->delete('beer_images/' . $beer->imagen);
-    }
-
-    // Eliminar la cervecería
-    $beer->delete();
-
-    return redirect()->route('beers.index')->with('success', 'Cerveza eliminada correctamente.');
-}
-
 }

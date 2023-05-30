@@ -99,6 +99,7 @@
                     <img src="{{ asset('storage/bar.jpg') }}" class="card-img-top rounded" alt="{{ $beer->nombre }}">
                 @endif
                 <h5 class="card-title"><b>{{ $beer->nombre }}</b></h5>
+                <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
 
                 <h6 class="card-title"><b>{{ $beer->vol }}°</b></h6>
                 <div class="place mt-2 mb-2 ms-2 me-2 text-center">
@@ -123,9 +124,20 @@
                 <div class="description-box">
                     <p class="card-text">{{ $beer->descripcion }}</p>
                 </div>
-                <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
 @auth
-    
+        </div>
+<div class="mt-3 text-center">
+    <h5 class="font-weight-bold"><b>Disponible en:</b></h5>
+    <ul style="list-style-type: none;">
+        @foreach ($beer->breweries as $brewery)
+            <li>
+                <i class="fas fa-beer"></i>
+                <a href="{{ route('breweries.show', ['id' => $brewery->id]) }}">{{ $brewery->nombre }}</a>
+            </li>
+        @endforeach
+    </ul>
+</div>
+</div>
 
                 <div class="d-flex justify-content-center mb-1">
                     <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-2">

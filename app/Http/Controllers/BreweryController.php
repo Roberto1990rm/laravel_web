@@ -54,55 +54,41 @@ class BreweryController extends Controller
 }
 
 
-public function store(BreweryRequest $request)
+public function store(Request $request)
 {
-    $brewery = new Brewery();
+    $beer = new Beer();
 
     // Asignar valores de los campos del formulario
-    $brewery->nombre = $request->input('nombre');
-    $brewery->descripcion = $request->input('descripcion');
-    $brewery->poblacion = $request->input('poblacion');
-    $brewery->calle = $request->input('calle');
-    $brewery->longitude = $request->input('longitude');
-    $brewery->latitude = $request->input('latitude');
+    $beer->nombre = $request->input('nombre');
+    $beer->descripcion = $request->input('descripcion');
+    $beer->marca = $request->input('marca');
+    $beer->vol = $request->input('vol');
 
-    // Asignar el usuario autenticado como creador de la cervecería
-    $brewery->user_id = Auth::id(); 
-    
-    
-    // Obtener el ID del usuario autenticado
-
-    // Guardar la imagen principal
+    // Guardar la imagen
     if ($request->hasFile('imagen')) {
         $image = $request->file('imagen');
-        $path = $image->store('brewery_images', 'public');
-        $brewery->imagen = $path;
+        $path = $image->store('beer_images', 'public');
+        $beer->imagen = $path;
     } else {
-        // Si no se proporciona una nueva imagen, asignar la imagen por defecto
-        $brewery->imagen = 'bar.jpg';
+        // Si no se proporciona una nueva imagen, mostrar error y redirigir
+        return redirect()->back()->withErrors(['imagen' => 'La imagen es obligatoria.'])->withInput();
     }
 
-    // Guardar la cervecería
-    $brewery->save();
-    $beers = $request->beers;
-    $brewery->beers()->attach($beers);
+    // Guardar la cerveza
+    $beer->save();
 
-    // Obtener el ID de la cervecería guardada
-    $breweryId = $brewery->id;
+    $breweries = $request->input('breweries'); // Obtener las cervecerías seleccionadas
+    $beer->breweries()->sync($breweries); // Guardar las relaciones
 
-    // Guardar las imágenes adicionales
-    if ($request->hasFile('images')) {
-        foreach ($request->file('images') as $image) {
-            $path = $image->store('brewery_images', 'public');
-            $breweryImage = new Image();
-            $breweryImage->brewery_id = $breweryId; // Asignar el ID de la cervecería a brewery_id
-            $breweryImage->img = $path;
-            $breweryImage->save();
-        }
+    // Guardar la relación inversa desde las cervecerías a la cerveza
+    foreach ($breweries as $breweryId) {
+        $brewery = Brewery::find($breweryId);
+        $brewery->beers()->attach($beer->id);
     }
 
-    return redirect()->route('breweries.index')->with('success', 'La cervecería se ha creado correctamente.');
+    return redirect()->route('beers.index')->with('success', 'Cerveza creada correctamente.');
 }
+
 
 public function edit($id)
 {
