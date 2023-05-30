@@ -71,6 +71,22 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="mb-3 col-sm-12" style="color: #FFFFFF">
+                <b>Cervezas disponibles</b>
+    <div class="row">       
+        @foreach($beers as $beer)
+            <div class="col-md-6 p-2">
+                {{ $beer->nombre }}
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="beers[]" value="{{ $beer->id }}" role="switch" id="beer_{{ $beer->id }}">
+                    <label class="form-check-label" for="beer_{{ $beer->id }}"> {{ $beer->marca }}Default switch checkbox input</label>
+                  </div>
+            </div>
+        @endforeach
+    </div>
+</div>
+
 
             <div class="row mb-3">
                 <div class="col-12 text-center">
@@ -86,6 +102,9 @@
                         </a>
                     </div>
                 </div>
+
+            
+
             </div>
         </form>
     </div>

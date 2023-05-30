@@ -1,10 +1,11 @@
-<?php
+<?php  //bueno
 
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BreweryRequest;
 use Illuminate\Http\Request;
 use App\Models\Brewery;
+use App\Models\Beer;
 use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,9 @@ public function show($id)
 
     public function create()
 {
-    return view('breweries.create');
+    $beers = Beer::orderBy('nombre')->get();
+
+    return view('breweries.create', compact ('beers'));
 }
 
 
@@ -62,7 +65,10 @@ public function store(BreweryRequest $request)
     $brewery->latitude = $request->input('latitude');
 
     // Asignar el usuario autenticado como creador de la cervecería
-    $brewery->user_id = Auth::id(); // Obtener el ID del usuario autenticado
+    $brewery->user_id = Auth::id(); 
+    
+    
+    // Obtener el ID del usuario autenticado
 
     // Guardar la imagen principal
     if ($request->hasFile('imagen')) {
@@ -76,6 +82,8 @@ public function store(BreweryRequest $request)
 
     // Guardar la cervecería
     $brewery->save();
+    $beers = $request->beers;
+    $brewery->beers()->attach($beers);
 
     // Obtener el ID de la cervecería guardada
     $breweryId = $brewery->id;
@@ -106,45 +114,45 @@ public function store(BreweryRequest $request)
     }
 
     public function update(Request $request, $id)
-    {
-        $brewery = Brewery::findOrFail($id);
-        $brewery->nombre = $request->input('nombre');
-        $brewery->descripcion = $request->input('descripcion');
-        $brewery->poblacion = $request->input('poblacion');
-        $brewery->calle = $request->input('calle');
-        $brewery->longitude = $request->input('longitude');
-        $brewery->latitude = $request->input('latitude');
+{
+    $brewery = Brewery::findOrFail($id);
+    $brewery->nombre = $request->input('nombre');
+    $brewery->descripcion = $request->input('descripcion');
+    $brewery->poblacion = $request->input('poblacion');
+    $brewery->calle = $request->input('calle');
+    $brewery->longitude = $request->input('longitude');
+    $brewery->latitude = $request->input('latitude');
 
-        if ($request->hasFile('imagen')) {
-            // Eliminar imagen anterior
-            Storage::delete($brewery->imagen);
+    if ($request->hasFile('imagen')) {
+        // Eliminar imagen anterior
+        Storage::delete($brewery->imagen);
 
-            // Guardar nueva imagen
-            $brewery->imagen = $request->file('imagen')->store('public');
-        }
-
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                // Guardar imágenes adicionales
-                $path = $image->store('brewery_images', 'public');
-                $brewery->images()->create(['img' => $path]);
-            }
-        }
-
-        if ($request->hasFile('existing-images')) {
-            foreach ($request->file('existing-images') as $imageId => $image) {
-                // Actualizar imágenes existentes
-                $existingImage = $brewery->images()->findOrFail($imageId);
-                Storage::delete($existingImage->img);
-                $existingImage->img = $image->store('brewery_images', 'public');
-                $existingImage->save();
-            }
-        }
-
-        $brewery->save();
-
-        return redirect()->route('breweries.show', ['id' => $brewery->id])->with('success', 'Cervecería actualizada exitosamente.');
+        // Guardar nueva imagen
+        $brewery->imagen = $request->file('imagen')->store('public');
     }
+
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            // Guardar imágenes adicionales
+            $path = $image->store('brewery_images', 'public');
+            $brewery->images()->create(['img' => $path]);
+        }
+    }
+
+    if ($request->has('delete-images')) {
+        foreach ($request->input('delete-images') as $imageId) {
+            // Eliminar imágenes adicionales seleccionadas
+            $image = Image::findOrFail($imageId);
+            Storage::delete($image->img);
+            $image->delete();
+        }
+    }
+
+    $brewery->save();
+
+    return redirect()->route('breweries.show', ['id' => $brewery->id])->with('success', 'Cervecería actualizada exitosamente.');
+}
+
 
     public function destroy($id)
     {

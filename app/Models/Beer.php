@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Beer extends Model
 {
     use HasFactory;
+
+    public function breweries () {
+        return $this->belongsToMany(Brewery::class, 'beer_brewery');
+    }
+
+
+
+
 }

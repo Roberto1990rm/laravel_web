@@ -50,12 +50,20 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="imagen" class="form-label">Imagen de portada</label>
+                            <label for="imagen" class="form-label"><strong>Imagen de portada</strong></label>
                             <input type="file" class="form-control" id="imagen" name="imagen">
                         </div>
 
                         <div class="mb-3">
-                            <label for="images" class="form-label">Imágenes adicionales</label>
+                            <label for="images" class="form-label">Imagen interior</label>
+                            <input type="file" class="form-control" id="images" name="images[]" multiple>
+                        </div>
+                        <div class="mb-3">
+                            <label for="images" class="form-label">Imagen interior</label>
+                            <input type="file" class="form-control" id="images" name="images[]" multiple>
+                        </div>
+                        <div class="mb-3">
+                            <label for="images" class="form-label">Imagen interior</label>
                             <input type="file" class="form-control" id="images" name="images[]" multiple>
                         </div>
 
@@ -68,7 +76,14 @@
                                             <div class="image-box">
                                                 <img src="{{ url('storage/' . $image->img) }}" class="img-fluid rounded" style="width: 200px; height: 100px;" alt="{{ $brewery->nombre }}">
                                             </div>
-                                            <input type="file" class="form-control mt-2" id="image-{{ $image->id }}" name="existing-images[{{ $image->id }}]">
+                                            <div class="mt-2">
+                                                <label for="existing-image-{{ $image->id }}" class="form-label">Reemplazar imagen</label>
+                                                <input type="file" class="form-control" id="existing-image-{{ $image->id }}" name="existing-images[{{ $image->id }}]">
+                                            </div>
+                                            <div class="mt-2">
+                                                <input type="checkbox" name="delete-images[]" value="{{ $image->id }}" id="delete-image-{{ $image->id }}">
+                                                <label for="delete-image-{{ $image->id }}">Eliminar</label>
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>
@@ -76,7 +91,10 @@
                         @endif
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            <button type="submit" class="btn btn-primary mb-2">Guardar cambios</button>
+                        </div>
+                        <div class="text-center">
+                            <a href="{{ route('breweries.show', ['id' => $brewery->id]) }}" class="btn btn-secondary">Cancelar</a>
                         </div>
                     </form>
 

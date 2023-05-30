@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Brewery extends Model
@@ -19,6 +20,20 @@ class Brewery extends Model
     {
         return $this->hasMany(Image::class);
     }
+
+
+    public function beers()
+{
+    return $this->belongsToMany(Beer::class, 'beer_brewery');
+}
+
+
+
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 
     // otras relaciones y métodos del modelo
 }

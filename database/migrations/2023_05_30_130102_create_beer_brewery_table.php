@@ -1,25 +1,24 @@
 <?php
 
+use App\Models\Beer;
+use App\Models\Brewery;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImagesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('beer_brewery', function (Blueprint $table) {
             $table->id();
-            $table->string('img', 200);
 
-            $table->foreignId('brewery_id')
-                ->constrained('breweries')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-
+            $table->foreignIdFor(Brewery::class)->constrained();
+            $table->foreignIdFor(Beer::class)->constrained();
+            
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateImagesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('beer_brewery');
     }
-}
+};
