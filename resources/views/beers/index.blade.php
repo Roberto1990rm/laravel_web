@@ -96,7 +96,11 @@
     </div>
     @endforeach
 </div>
+<div class="d-flex justify-content-center">
 
+{{ $beers->links() }}
+
+</div>
 <div class="text-center mb-5 p-5">
     @auth
     <div class="d-flex flex-column align-items-center">

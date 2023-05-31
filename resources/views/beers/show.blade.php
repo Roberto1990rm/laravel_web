@@ -124,7 +124,7 @@
                 <div class="description-box">
                     <p class="card-text">{{ $beer->descripcion }}</p>
                 </div>
-@auth
+
         </div>
 <div class="mt-3 text-center">
     <h5 class="font-weight-bold"><b>Disponible en:</b></h5>
@@ -138,6 +138,7 @@
     </ul>
 </div>
 </div>
+@auth
 
                 <div class="d-flex justify-content-center mb-1">
                     <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-2">

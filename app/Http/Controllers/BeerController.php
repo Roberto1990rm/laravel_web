@@ -8,12 +8,13 @@ use App\Models\Brewery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Pagination\Paginator;
 class BeerController extends Controller
 {
     public function index()
     {
-        $beers = Beer::orderBy('marca')->get();
+        Paginator::useBootstrapFive();
+        $beers = Beer::orderBy('marca')->paginate(3);
         return view('beers.index', compact('beers'));
     }
 
@@ -110,4 +111,5 @@ class BeerController extends Controller
 
         return redirect()->route('beers.index')->with('success', 'Cerveza eliminada correctamente.');
     }
+    
 }
