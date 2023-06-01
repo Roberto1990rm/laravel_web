@@ -8,6 +8,7 @@ use App\Models\Brewery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Pagination\Paginator;
 class BeerController extends Controller
 {
@@ -34,6 +35,7 @@ class BeerController extends Controller
         $beer->marca = $request->input('marca');
         $beer->nombre = $request->input('nombre');
         $beer->vol = $request->input('vol');
+        $beer->precio = $request->input('precio');
         $beer->descripcion = $request->input('descripcion');
         $beer->user_id = Auth::id();
 
@@ -56,7 +58,24 @@ class BeerController extends Controller
 
     public function show(Beer $beer)
     {
-        return view('beers.show', compact('beer'));
+        $endpoint = 'https://api.frankfurter.app';
+        $operation = '/latest';
+        $params = [
+            'amount' => $beer->precio,
+            'from' => 'EUR',
+            'to' => 'JPY,USD,GBP,MXN'
+        ];
+        
+        $response = Http::withoutVerifying()->get($endpoint . $operation, $params);
+
+        if ($response->failed()) {
+            // Manejo de errores de la solicitud HTTP
+            // ...
+        }
+
+        $exchange = $response->json()['rates'];
+
+        return view('beers.show', compact('beer', 'exchange'));
     }
     
     public function edit($id)
@@ -72,6 +91,8 @@ class BeerController extends Controller
     $beer = Beer::findOrFail($id);
     $beer->nombre = $request->input('nombre');
     $beer->descripcion = $request->input('descripcion');
+    $beer->marca = $request->input('marca');
+    $beer->precio = $request->input('precio');
 
     if ($request->hasFile('imagen')) {
         $image = $request->file('imagen');

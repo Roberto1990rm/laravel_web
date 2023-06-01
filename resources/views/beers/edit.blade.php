@@ -28,6 +28,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="precio" class="form-label">precio</label>
+                    <input class="form-control" id="precio" name="precio" rows="3" required>{{ $beer->precio }}</textarea>
+                </div>
+
+                <div class="mb-3">
                     <label for="marca" class="form-label">Marca</label>
                     <input type="text" class="form-control" id="poblacion" name="marca" value="{{ $beer->marca }}" required>
                 </div>

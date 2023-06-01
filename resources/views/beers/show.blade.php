@@ -86,8 +86,6 @@
     }
 </style>
 
-
-
 <div class="row d-flex justify-content-center mb-4 p-0">
     <div class="col-sm-8">
         <h1 class="custom-heading">Detalle de cerveza</h1>
@@ -102,6 +100,18 @@
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
 
                 <h6 class="card-title"><b>{{ $beer->vol }}°</b></h6>
+                <div class="mt-2">
+                    <h6 class="card-title"><b>{{ $beer->precio }}</b> <i>Euros</i><br> (orientativo)</h6>
+                    <table class="mt-2 mx-auto">
+                        @foreach ($exchange as $currency => $rate)
+                            <tr>
+                                <td class="text-right">{{ $rate }}</td>
+                                <td class="text-center">{{ $currency }}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
+                
                 <div class="place mt-2 mb-2 ms-2 me-2 text-center">
                     @php
                         $beerCount = 10;
@@ -124,41 +134,35 @@
                 <div class="description-box">
                     <p class="card-text">{{ $beer->descripcion }}</p>
                 </div>
-
-        </div>
-<div class="mt-3 text-center">
-    <h5 class="font-weight-bold"><b>Disponible en:</b></h5>
-    <ul style="list-style-type: none;">
-        @foreach ($beer->breweries as $brewery)
-            <li>
-                <i class="fas fa-beer"></i>
-                <a href="{{ route('breweries.show', ['id' => $brewery->id]) }}">{{ $brewery->nombre }}</a>
-            </li>
-        @endforeach
-    </ul>
-</div>
-</div>
-@auth
+                
+                <div class="mt-3 text-center">
+                    <h5 class="font-weight-bold"><b>Disponible en:</b></h5>
+                    <ul style="list-style-type: none;">
+                        @foreach ($beer->breweries as $brewery)
+                            <li>
+                                <i class="fas fa-beer"></i>
+                                <a href="{{ route('breweries.show', ['id' => $brewery->id]) }}">{{ $brewery->nombre }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
 
                 <div class="d-flex justify-content-center mb-1">
-                    <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-2">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <form method="POST" action="{{ route('beers.destroy', $beer) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger rounded-circle me-2" onclick="return confirm('¿Estás seguro de eliminar esta cervecería?')">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </form>
+                    @auth
+                        <a href="{{ route('beers.edit', ['id' => $beer->id]) }}" class="btn btn-primary rounded-circle me-2">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <form method="POST" action="{{ route('beers.destroy', ['id' => $beer->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger rounded-circle">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
                     @endauth
-                    <a href="{{ route('beers.index') }}" class="btn btn-primary rounded-circle me-3" style="background-color: #2196F3; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
-                        <i class="fas fa-arrow-left"></i>
-                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

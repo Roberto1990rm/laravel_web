@@ -45,6 +45,13 @@
                     vol es obligatorio.
                 </div>
             </div>
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio orientativo</label>
+                <input type="decimal" class="form-control" id="precio" name="precio" value="{{ old('precio') }}" required/>
+                <div class="invalid-feedback">
+                    precio es obligatorio a modo orientativo.
+                </div>
+            </div>
             
             <div class="mb-3">
                 <label for="imagen" class="form-label">Imagen</label>
