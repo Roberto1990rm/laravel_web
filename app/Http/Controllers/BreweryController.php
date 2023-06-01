@@ -1,4 +1,4 @@
-<?php  //bueno
+<?php
 
 namespace App\Http\Controllers;
 
@@ -10,13 +10,13 @@ use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Database\Eloquent\Collection;
 
 class BreweryController extends Controller
 {
     public function index()
     {
-        $breweries = Brewery::orderBy('nombre')->paginate(3);
+        $breweries = Brewery::orderBy('nombre')->get();
         
         foreach ($breweries as $brewery) {
             if (empty($brewery->imagen)) {
@@ -48,7 +48,7 @@ class BreweryController extends Controller
 
     public function create()
 {
-    $beers = Beer::orderBy('nombre')->get();
+    $breweries = Brewery::orderBy('nombre')->get();
 
     return view('breweries.create', compact ('beers'));
 }
