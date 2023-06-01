@@ -98,7 +98,7 @@
 </div>
 <div class="d-flex justify-content-center">
 
-{{ $beers->links() }}
+    {{ $beers->links('pagination::bootstrap-4') }}
 
 </div>
 <div class="text-center mb-5 p-5">

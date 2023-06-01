@@ -160,6 +160,11 @@
                             </button>
                         </form>
                     @endauth
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ route('beers.index') }}" class="btn btn-primary rounded-circle ms-3" style="background-color: #2196F3; color: #FFFFFF; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); opacity: 0.70;">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

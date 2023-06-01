@@ -48,9 +48,14 @@
                                 <h5 class="font-weight-bold"><b>Cervezas servidas:</b></h5>
                                 <ul style="list-style-type: none;">
                                     @foreach ($brewery->beers as $beer)
+                                        @php
+                                            $colorClasses = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-danger', 'bg-warning', 'bg-info', 'bg-dark'];
+                                            $randomIndex = random_int(0, count($colorClasses) - 1);
+                                            $randomColorClass = $colorClasses[$randomIndex];
+                                        @endphp
                                         <li>
                                             <i class="fas fa-beer"></i>
-                                            <a href="{{ route('beers.show', ['id' => $beer->id]) }}">{{ $beer->nombre }}</a>
+                                            <a href="{{ route('beers.show', ['id' => $beer->id]) }}"><span class="badge {{ $randomColorClass }}">{{ $beer->nombre }}</span></a>
                                         </li>
                                     @endforeach
                                 </ul>

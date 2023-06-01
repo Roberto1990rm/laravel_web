@@ -138,6 +138,12 @@
                     </div>
                 </div>
                 @endforeach
+                <div class="d-flex justify-content-center">
+
+                    {{ $breweries->links('pagination::bootstrap-4') }}
+
+                    
+                    </div>
             </div>
         </div>
     </div>
