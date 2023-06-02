@@ -15,10 +15,18 @@ Route::get('home', function () {
     ]);
 })->name('home');
 
+Route::post('home', function () {
+    $counter = session('counter', 0); // Obtiene el valor actual del contador de la sesión
+    $counter++; // Incrementa el contador en 1
+    session(['counter' => $counter]); // Almacena el nuevo valor del contador en la sesión
 
-Route::get('/', function() {
+    return view('home', compact('counter')); // Pasar el contador a la vista
+});
+
+Route::get('/', function () {
     return redirect()->route('home');
-})->name('root'); // Cambia el nombre de esta ruta a 'root'
+})->name('root');
+
 
 
 Route::get('/cervecerias', [BreweryController::class, 'index'])->name('breweries.index');
@@ -33,6 +41,8 @@ Route::get('/cervecerias/edit/{id}', [BreweryController::class, 'edit'])->name('
 Route::post('/cervecerias/update/{id}', [BreweryController::class, 'update'])->name('breweries.update');
 Route::delete('/breweries/{id}', [BreweryController::class, 'destroy'])->name('breweries.destroy');//si es incorrecta es destoy más abajo comentada.
 });
+
+
 
 Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('breweries.show');
 

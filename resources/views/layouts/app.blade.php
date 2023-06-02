@@ -76,6 +76,7 @@
             border-bottom-style: solid;
         }
     </style>
+    @livewireStyles
 </head>
 <body>
 <div class="container">
@@ -146,5 +147,6 @@
         Pié de página &copy; {{ date('Y') }}. Todos los derechos reservados. Diseñado por <a href="#" target="_blank">Roberto Ramírez</a>.
     </div>
 </footer>
+@livewireScripts
 </body>
 </html>

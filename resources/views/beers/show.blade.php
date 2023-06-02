@@ -99,16 +99,38 @@
                 <h5 class="card-title"><b>{{ $beer->nombre }}</b></h5>
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
 
-                <h6 class="card-title"><b>{{ $beer->vol }}°</b></h6>
+                
                 <div class="mt-2">
-                    <h6 class="card-title"><b>{{ $beer->precio }}</b> <i>Euros</i><br> (orientativo)</h6>
+                    <h6 class="card-title">{{ $beer->precio }} <b><i>Euros</b></i><br> (orientativo)</h6>
                     <table class="mt-2 mx-auto">
-                        @foreach ($exchange as $currency => $rate)
-                            <tr>
-                                <td class="text-right">{{ $rate }}</td>
-                                <td class="text-center">{{ $currency }}</td>
-                            </tr>
-                        @endforeach
+                        @php
+                            $exchangeCount = count($exchange);
+                            $exchangeHalf = ceil($exchangeCount / 2);
+                            $exchangeKeys = array_keys($exchange);
+                            $exchangeValues = array_values($exchange);
+                        @endphp
+                        <tr>
+                            <td>
+                                <table>
+                                    @for ($i = 0; $i < $exchangeHalf; $i++)
+                                        <tr>
+                                            <td class="text-right">{{ $exchangeValues[$i] }}</td>
+                                            <td class="text-center"><b>{{ $exchangeKeys[$i] }}</b></td>
+                                        </tr>
+                                    @endfor
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    @for ($i = $exchangeHalf; $i < $exchangeCount; $i++)
+                                        <tr>
+                                            <td class="text-right">{{ $exchangeValues[$i] }}</td>
+                                            <td class="text-center"><b>{{ $exchangeKeys[$i] }}</b></td>
+                                        </tr>
+                                    @endfor
+                                </table>
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 
@@ -130,7 +152,7 @@
                         @endif
                     @endfor
                 </div>
-                
+                <h6 class="card-title"><b>{{ $beer->vol }}°</b></h6>
                 <div class="description-box">
                     <p class="card-text">{{ $beer->descripcion }}</p>
                 </div>

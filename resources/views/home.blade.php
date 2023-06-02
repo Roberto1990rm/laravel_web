@@ -157,6 +157,10 @@
         <img src="{{ asset('img/bar12.gif') }}" class="rounded-image" style="opacity: 0.8; filter: alpha(opacity=50);">
     </a>
 
+    
+
+    <livewire:counter />
+
     <div class="card-body">
         @if (session('status'))
             <div class="alert alert-success" role="alert">
