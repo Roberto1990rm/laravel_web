@@ -5,26 +5,35 @@
 @section('content')
 
 <style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
     .home-container {
-        position: relative;
-        overflow: hidden;
-        height: 100vh; /* Ajusta la altura del contenedor a la altura de la ventana */
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
         color: #FFFFFF;
+        position: sticky;
+        margin-bottom: 50px;
     }
 
     .background-animation {
-        position: absolute;
+        position:fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         z-index: -1;
         animation: backgroundAnimation 10s ease infinite;
+        
     }
 
     @keyframes backgroundAnimation {
@@ -43,9 +52,9 @@
         border-radius: 50%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         width: 100%;
-        max-width: 300px; /* Ajusta el tamaño máximo de la imagen redonda */
+        max-width: 300px;
         margin-bottom: 30px;
-        animation: heartbeat 1.5s ease-in-out infinite; /* Agrega la animación heartbeat al gif */
+        animation: heartbeat 1.5s ease-in-out infinite;
     }
 
     .enter-icon {
@@ -53,23 +62,12 @@
         font-size: 30px;
     }
 
-    body, html {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-
     .full-width {
         width: 100vw;
         height: 100vh;
     }
 
-    .custom-heading {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        animation: heartbeat 1.5s ease-in-out infinite;
-    }
+   
 
     @keyframes heartbeat {
         0% {
@@ -116,34 +114,34 @@
         margin-top: 20px;
         font-size: 24px;
         font-weight: bold;
-        color: #000000; /* Cambia el color del texto a negro */
+        color: #000000;
     }
 
     /* Ajuste para tablet */
     @media screen and (min-width: 768px) and (max-width: 991px) {
         .rounded-image {
-            max-width: 450px; /* Aumenta el tamaño máximo de la imagen redonda para tablet */
+            max-width: 350px;
         }
     }
 
     /* Ajuste para modo móvil */
     @media screen and (max-width: 767px) {
         .rounded-image {
-            max-width: 225px; /* Reduce el tamaño máximo de la imagen redonda para móvil */
+            max-width: 200px;
         }
     }
 
     /* Ajuste para pantallas grandes */
     @media screen and (min-width: 1024px) {
         .rounded-image {
-            max-width: 600px; /* Aumenta el tamaño máximo de la imagen redonda */
+            max-width: 500px;
         }
     }
 
 
     @media screen and (min-width: 2500px) {
         .rounded-image {
-            max-width: 740px; /* Aumenta el tamaño máximo de la imagen redonda */
+            max-width: 600px;
         }
     }
 </style>
@@ -151,27 +149,17 @@
 <div class="home-container">
     <div class="background-animation"></div>
 
-    <h1 class="custom-heading mt-5 mb-5" onclick="window.location.href='{{ route('beers.index') }}';">Late al ritmo de tus cervezas favoritas</h1>
+    <h1 class="custom-heading mt-3 mb-5" onclick="window.location.href='{{ route('beers.index') }}';">Late al ritmo de tus cervezas favoritas</h1>
 
     <a href="{{ route('breweries.index') }}">
-        <img src="{{ asset('img/bar12.gif') }}" class="rounded-image" style="opacity: 0.8; filter: alpha(opacity=50);">
+        <img src="{{ asset('img/bar12.gif') }}" class="rounded-image mb-5" style="opacity: 0.8; filter: alpha(opacity=50);">
     </a>
 
-    
-
-    <livewire:counter />
-
-    <div class="card-body">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        {{ __('Aquí encontrarás lo mejor de todas las variedades de cervezas') }}
-    </div>
-
-    
+    <h1 class="custom-heading mt-4" style="margin-bottom: 80px;">
+        <livewire:counter />
+    </h1>
 </div>
+
+
 
 @endsection

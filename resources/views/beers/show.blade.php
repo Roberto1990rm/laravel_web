@@ -89,7 +89,7 @@
 <div class="row d-flex justify-content-center mb-4 p-0">
     <div class="col-sm-8">
         <h1 class="custom-heading">Detalle de cerveza</h1>
-        <div class="custom-card1 card mb-4 mt-4">
+        <div class="card" style="border-radius: 10px; margin-bottom: 80px; background: linear-gradient(135deg, #F5EFD6, #fff200); border: none;">
             <div class="card-body text-center" style="padding: 0;">
                 @if ($beer->imagen)
                     <img src="{{ url('storage/' . $beer->imagen) }}" class="card-img-top rounded" alt="{{ $beer->nombre }}">

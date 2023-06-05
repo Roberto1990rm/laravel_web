@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 mt-3">
                 <h1 class="custom-heading">Detalle de cervecería</h1>
-                <div class="card mb-4" style="border-radius: 10px; background: linear-gradient(135deg, #F5EFD6, #fff200); border: none;">
+                <div class="card" style="border-radius: 10px; margin-bottom: 80px; background: linear-gradient(135deg, #F5EFD6, #fff200); border: none;">
                     @if ($brewery->images->isEmpty())
                         <img src="{{ asset('img/default.jpg') }}" class="card-img-top rounded-0" alt="{{ $brewery->nombre }}">
                     @else

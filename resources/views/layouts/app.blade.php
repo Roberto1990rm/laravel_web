@@ -29,6 +29,7 @@
             background: linear-gradient(to left, #ffeb3b, #ffffff);
             border: none;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
         }
 
         .navbar-brand img {
@@ -80,7 +81,7 @@
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-expand-md navbar-light">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ asset('/img/logo.webp') }}" alt="{{ config('app.name') }}">
@@ -137,7 +138,7 @@
         </div>
     </nav>
     
-    <article>
+    <article style="margin-top: 100px;">
         @yield('content')
     </article>
 </div>

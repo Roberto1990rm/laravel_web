@@ -29,12 +29,18 @@ class BreweryController extends Controller
     }
 
     public function proposals()
-    {
-        $user = Auth::user();
-        $breweries = Brewery::where('user_id', $user->id)->get();
+{
+    $user = auth()->user();
+    $breweries = $user->breweries;
 
-        return view('breweries.index', ['breweries' => $breweries]);
-    }
+    return view('livewire.search', [
+        'breweries' => $breweries,
+        'hideSearchBar' => true,
+        'proposalsPage' => true, // Variable para indicar que se está accediendo desde el método proposals
+    ]);
+}
+
+
 
     public function show($id)
     {
