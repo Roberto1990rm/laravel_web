@@ -12,12 +12,29 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Pagination\Paginator;
 class BeerController extends Controller
 {
+    
     public function index()
-    {
-        Paginator::useBootstrapFive();
-        $beers = Beer::orderBy('marca')->paginate(3);
-        return view('beers.index', compact('beers'));
+{
+    $beers = Beer::paginate(3); // Obtener solo 6 cervezas inicialmente
+    
+    if (request()->expectsJson()) {
+        $view = view('beers.load', compact('beers'))->render(); // Generar la vista parcial
+        $nextPageUrl = $beers->nextPageUrl(); // Obtener la URL de la siguiente página
+    
+        return response()->json([
+            'view' => $view, // Enviar la vista parcial en la respuesta JSON
+            'nextPageUrl' => $nextPageUrl
+        ]);
     }
+    
+    return view('beers.index')->with('beers', $beers);
+}
+
+    
+    
+
+
+
 
     public function create()
     {
@@ -113,6 +130,9 @@ class BeerController extends Controller
 
     return redirect()->route('beers.show', ['id' => $beer->id])->with('success', 'Cerveza actualizada correctamente.');
 }
+
+
+
 
 
 

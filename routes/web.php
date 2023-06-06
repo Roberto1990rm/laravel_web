@@ -48,6 +48,7 @@ Route::get('/cervecerias/{id}', [BreweryController::class, 'show'])->name('brewe
 
 
 Route::resource('/beers', BeerController::class)->parameters(["beers"]);
+Route::get('/beers/load', 'BeerController@loadBeers')->name('beers.load');
 
 Route::get('/beers/create', [BeerController::class, 'create'])->name('beers.create');
 Route::post('/beers/store', [BeerController::class, 'store'])->name('beers.store');

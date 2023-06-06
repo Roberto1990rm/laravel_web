@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d0a3551360.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.infinitescroll/3.0.6/jquery.infinitescroll.min.js"></script>
+
 
     <style>
         body {
