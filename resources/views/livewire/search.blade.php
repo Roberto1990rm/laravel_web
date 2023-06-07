@@ -4,7 +4,7 @@
     $containerClass = isset($proposalsPage) && $proposalsPage ? 'margin-top-100' : '';
 @endphp
 
-<div class="container {{ $containerClass }}">
+<div class="container {{ $containerClass }}" id="breweries-list">
     <div class="row">
         <div class="col-md-12">
             @if (!isset($hideSearchBar) || !$hideSearchBar)
@@ -34,7 +34,7 @@
 
                             <div class="card-body">
                                 <h4 class="card-title"><b>{{ $brewery->nombre }}</b></h4>
-                                <p class="card-text">{{ $brewery->descripcion }}</p>
+                                <div class="card-text scrollable-text" style="max-height: 150px; overflow-y: auto;">{{ $brewery->descripcion }}</div>
                                 <p class="card-text"><small>{{ $brewery->poblacion }}</small></p>
                             </div>
 

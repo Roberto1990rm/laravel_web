@@ -150,11 +150,17 @@
         </div>
     </div>
 </div>
+@auth
+    <div id="create-button" class="text-center">
+        <a href="{{ route('beers.create') }}" class="btn btn-primary">Añadir cerveza</a>
+    </div>
+@endauth
 
-<div id="create-button" class="text-center">
-    <a href="{{ route('beers.create') }}" class="btn btn-primary">Añadir cerveza</a>
-</div>
-
+@guest
+    <div id="create-button" class="text-center">
+        <p>Debes estar registrado para añadir cervezas.</p>
+    </div>
+@endguest
 <div id="home-button" class="text-center" style="margin-bottom: 80px;margin-top: 20px;">
     <a href="/" class="btn btn-primary">
         <i class="bi bi-house" style="font-size: 1rem;"></i>

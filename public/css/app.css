@@ -147,6 +147,11 @@ h1 {
     height: 300px;
 }
 
+.scrollable-text {
+    max-height: 200px; /* Altura máxima de la caja de texto */
+    overflow-y: auto; /* Habilita el scroll vertical si el contenido excede la altura máxima */
+}
+
 ul {
     list-style-type: none;
 }
@@ -163,6 +168,8 @@ ul {
     opacity: 0.9;
     color: #FDECEC;
 }
+
+
 
 .margin-top-100 {
     margin-top: 100px;
