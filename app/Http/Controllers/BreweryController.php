@@ -16,17 +16,22 @@ use Illuminate\Database\Eloquent\Collection;
 class BreweryController extends Controller
 {
     public function index()
-    {
-        $breweries = Brewery::orderBy('nombre')->get();
+{
+    $breweries = Brewery::orderBy('nombre')->get();
 
+    if ($breweries->isEmpty()) {
+        $breweries = null;
+    } else {
         foreach ($breweries as $brewery) {
             if (empty($brewery->imagen)) {
                 $brewery->imagen = asset('storage/bar.jpg');
             }
         }
-
-        return view('breweries.index', compact('breweries'));
     }
+
+    return view('breweries.index', compact('breweries'));
+}
+
 
     public function proposals()
 {

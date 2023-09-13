@@ -36,15 +36,17 @@ class BeerController extends Controller
 
 
 
-    public function create()
-    {
-        if (Auth::check()) {
-            $breweries = Brewery::orderBy('nombre')->get();
-            return view('beers.create', compact('breweries'));
-        } else {
-            return redirect()->route('beers.index');
-        }
+public function create()
+{
+    $breweries = null;
+
+    if (Auth::check()) {
+        $breweries = Brewery::orderBy('nombre')->get();
     }
+
+    return view('beers.create', compact('breweries'));
+}
+
 
     public function store(BeerRequest $request)
     {
