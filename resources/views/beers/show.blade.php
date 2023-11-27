@@ -94,7 +94,7 @@
                 @if ($beer->imagen)
                     <img src="{{ url('storage/' . $beer->imagen) }}" class="card-img-top rounded" alt="{{ $beer->nombre }}">
                 @else
-                    <img src="{{ asset('storage/bar.jpg') }}" class="card-img-top rounded" alt="{{ $beer->nombre }}">
+                    <img src="{{ asset('..public/img/bar.jpg') }}" class="card-img-top rounded" alt="{{ $beer->nombre }}">
                 @endif
                 <h5 class="card-title"><b>{{ $beer->nombre }}</b></h5>
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>

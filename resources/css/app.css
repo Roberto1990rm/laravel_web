@@ -1,0 +1,61 @@
+
+body {
+    background-image: url("{{ asset('img/madera.jpeg') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: #f1f1f1;
+}
+
+.navbar {
+    background: linear-gradient(to left, #ffeb3b, #ffffff);
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+
+.navbar-brand img {
+    height: 3em;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+}
+
+.navbar-nav .nav-link {
+    font-weight: bold;
+    color: #050505;
+    font-size: 1em;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: #000;
+}
+
+.navbar-nav .nav-link:nth-child(3),
+.navbar-nav .nav-link:nth-child(4) {
+    color: #fff;
+    font-size: 0.8em;
+}
+
+.footer {
+    background-color: #212121;
+    color: #fff;
+    padding: 1.5rem 0;
+    font-size: 0.85em;
+}
+
+.footer .container {
+    text-align: center;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dashed #fff;
+}
+
+.footer a:hover,
+.footer a:focus {
+    border-bottom-style: solid;
+}
