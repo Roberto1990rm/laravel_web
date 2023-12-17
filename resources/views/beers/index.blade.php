@@ -101,6 +101,7 @@
     }
 </style>
 
+
 <h1 class="custom-heading">Aquí vienen las cervezas</h1>
 
 <div id="beer-container">
