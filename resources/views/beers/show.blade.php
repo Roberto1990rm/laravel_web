@@ -84,6 +84,7 @@
             margin-bottom: 5px; /* Añade un espacio entre los logos envueltos en varias líneas */
         }
     }
+    
 </style>
 
 <div class="row d-flex justify-content-center mb-4 p-0">
