@@ -98,6 +98,8 @@
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
 
                 
+
+                
                 <div class="mt-2">
                     <h6 class="card-title">{{ $beer->precio }} <b><i>Euros</b></i><br> (orientativo)</h6>
                     <table class="mt-2 mx-auto">
