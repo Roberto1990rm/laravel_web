@@ -92,10 +92,8 @@
         <div class="card" style="border-radius: 10px; margin-bottom: 80px; background: linear-gradient(135deg, #F5EFD6, #fff200); border: none;">
             <div class="card-body text-center" style="padding: 0;">
                 @if ($beer->imagen)
-                    <img src="{{ url('storage/' . $beer->imagen) }}" class="card-img-top rounded" alt="{{ $beer->nombre }}">
-                @else
-                    <img src="{{ asset('..public/img/bar.jpg') }}" class="card-img-top rounded" alt="{{ $beer->nombre }}">
-                @endif
+                <img src="{{ $beer->imagen ? url('storage/' . $beer->imagen) : ($beer->imagen_portada ? url('storage/' . $beer->imagen_portada) : asset('/img/default-beer.jpg')) }}" class="card-img-top" alt="{{ $beer->nombre }}">
+                    @endif
                 <h5 class="card-title"><b>{{ $beer->nombre }}</b></h5>
                 <p class="card-text"><i><h6>{{ $beer->marca }}</h6></i></p>
 
